@@ -1,44 +1,76 @@
 <!--index.wxml-->
-<scroll-view scroll-y="true" class="container" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
-
-  <!--搜索框-->
-  <view class="search flex-wrp">
-    <view class="search-left flex-item">
-      <image src="../../images/search.png"></image>
-      <input placeholder="搜索问题" placeholder-class="search-placeholder" bindblur="search"/>
-    </view>
-    <!-- <view class="search-right flex-item" bindtap="upper"> -->
-    <view class="search-right flex-item" bindtap="bindAskTap">
-      <!-- <view> -->
-      <image class="ask" src="../../images/ask.png"></image>
-      <text class="ask-text">提问</text>
-    </view>
+<!-- 搜索框 -->
+<view class="page__bd">
+  <view class='location' bindtap='selectCity'>
+    <image src="../../images/location.png"></image>
+    <text>{{city}}</text>
   </view>
-
-  <block wx:for="{{feed}}" wx:for-index="idx" wx:for-item="item" data-idx="{{idx}}">
-    <view class="feed-item" bindtap="bindQueTap" data-qid="{{item.id}}">
-      <view class="feed-content">
-        <!--问题-->
-        <view class="question">
-          <a class="question-link">
-            <text>{{item.title}}</text>
-          </a>
+  <view class="weui-search-bar">
+    <view class="weui-search-bar__form">
+      <view class="weui-search-bar__box">
+        <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
+        <input type="text" class="weui-search-bar__input" placeholder="搜索景点" value="{{select_text}}" focus="{{inputShowed}}" bindinput="inputTyping" />
+        <view class="weui-icon-clear" wx:if="{{select_text.length > 0}}" bindtap="clearInput">
+          <icon type="clear" size="14"></icon>
         </view>
-        <!--回答-->
-        <view class="answer-body">
-          <view>
-            <text class="answer-txt" aid="{{item.answerVo.id}}">{{item.answerVO.answerContent}}</text>
+      </view>
+      <label class="weui-search-bar__label" hidden="{{inputShowed}}" bindtap="showInput">
+        <icon class="weui-icon-search" type="search" size="14"></icon>
+        <view class="weui-search-bar__text">搜索景点</view>
+      </label>
+    </view>
+    <view class="weui-search-bar__cancel-btn" hidden="{{!inputShowed}}" bindtap="hideInput">取消</view>
+  </view>
+  <view class="weui-cells searchbar-result" wx:if="{{select_text.length > 0}}">
+    <navigator url="" class="weui-cell" hover-class="weui-cell_active">
+      <view class="weui-cell__bd">
+        <view>实时搜索文本</view>
+      </view>
+    </navigator>
+    <navigator url="" class="weui-cell" hover-class="weui-cell_active">
+      <view class="weui-cell__bd">
+        <view>实时搜索文本</view>
+      </view>
+    </navigator>
+    <navigator url="" class="weui-cell" hover-class="weui-cell_active">
+      <view class="weui-cell__bd">
+        <view>实时搜索文本</view>
+      </view>
+    </navigator>
+    <navigator url="" class="weui-cell" hover-class="weui-cell_active">
+      <view class="weui-cell__bd">
+        <view>实时搜索文本</view>
+      </view>
+    </navigator>
+  </view>
+</view>
+<view>
+  <scroll-view scroll-y="true" class="container" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
+    <block wx:for="{{feed}}" wx:for-index="idx" wx:for-item="item" data-idx="{{idx}}">
+      <view class="feed-item" bindtap="bindQueTap" data-qid="{{item.id}}">
+        <view class="feed-content">
+          <!--问题-->
+          <view class="question">
+            <a class="question-link">
+              <text>{{item.title}}</text>
+            </a>
           </view>
-          <view class="answer-actions">
-            <view class="comments dot">
-              <a>{{item.answerCount}} 回答 </a>
+          <!--回答-->
+          <view class="answer-body">
+            <view>
+              <text class="answer-txt" aid="{{item.answerVo.id}}">{{item.answerVO.answerContent}}</text>
             </view>
-            <view class="follow-it">
-              <a>{{item.createdDate}}</a>
+            <view class="answer-actions">
+              <view class="comments dot">
+                <a>{{item.answerCount}} 回答 </a>
+              </view>
+              <view class="follow-it">
+                <a>{{item.createdDate}}</a>
+              </view>
             </view>
           </view>
         </view>
       </view>
-    </view>
-  </block>
-</scroll-view>
+    </block>
+  </scroll-view>
+</view>

@@ -2,7 +2,10 @@
   "pages": [
     "pages/login/login",
     "pages/index/index",
-    "pages/notify/notify"
+    "pages/notify/notify",
+    "pages/init_info/init_info",
+    "pages/city_selector/city_selector",
+    "pages/sight_detail/sight_detail"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -12,28 +15,34 @@
     "enablePullDownRefresh": true
   },
   "tabBar": {
-    "color": "#626567",
-    "selectedColor": "#2A8CE5",
+    "color": "#afafaf",
+    "selectedColor": "#FF4F47",
     "backgroundColor": "#FBFBFB",
     "borderStyle": "white",
     "list": [
       {
         "pagePath": "pages/index/index",
-        "text": "",
-        "iconPath": "images/index.png",
-        "selectedIconPath": "images/index_focus.png"
+        "text": "主页",
+        "iconPath": "images/home.png",
+        "selectedIconPath": "images/home_focus.png"
+      },
+      {
+        "pagePath": "pages/index/index",
+        "text": "出游",
+        "iconPath": "images/tour.png",
+        "selectedIconPath": "images/tour_focus.png"
       },
       {
         "pagePath": "pages/notify/notify",
-        "text": "",
-        "iconPath": "images/ring.png",
-        "selectedIconPath": "images/ring_focus.png"
+        "text": "社团",
+        "iconPath": "images/group.png",
+        "selectedIconPath": "images/group_focus.png"
       },
       {
         "pagePath": "pages/notify/notify",
-        "text": "",
-        "iconPath": "images/burger.png",
-        "selectedIconPath": "images/burger_focus.png"
+        "text": "个人",
+        "iconPath": "images/user.png",
+        "selectedIconPath": "images/user_focus.png"
       }
     ]
   },

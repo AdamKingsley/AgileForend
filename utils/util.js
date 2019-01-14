@@ -1,17 +1,19 @@
 var app = getApp()
-
+var version = app.globalData.version
+var url_prefix = "http://" + app.globalData[version + 'Ip'] + ":" + app.globalData[version + 'Port']
 //get请求
-function getData(url){
-  return new Promise(function(resolve, reject){
+function getData(url) {
+  console.log(url_prefix)
+  return new Promise(function(resolve, reject) {
     wx.request({
-      url: "https://"+app.globalData.productIp+"/"+url,
+      url: url_prefix + "/" + url,
       header: {
         //'Content-Type': 'application/json'
       },
       success: function(res) {
         resolve(res)
       },
-      fail: function (res) {
+      fail: function(res) {
         reject(res)
       }
     })
@@ -19,19 +21,20 @@ function getData(url){
 }
 
 //post请求
-function postData(url,data) {
-  return new Promise(function (resolve, reject) {
+function postData(url, data) {
+  console.log(url_prefix)
+  return new Promise(function(resolve, reject) {
     wx.request({
-      url: "https://" + app.globalData.productIp + "/" + url,
+      url: url_prefix + "/" + url,
       method: "POST",
       data: data,
       header: {
         //'Content-Type': 'application/json'
       },
-      success: function (res) {
+      success: function(res) {
         resolve(res)
       },
-      fail: function (res) {
+      fail: function(res) {
         reject(res)
       }
     })
@@ -40,7 +43,7 @@ function postData(url,data) {
 
 //获取当前登录用户的ownerid
 const getOwnerId = () => {
-  return new Promise(function (resolve, reject) {
+  return new Promise(function(resolve, reject) {
     wx.getStorage({
       key: 'ownerid',
       success: res => {
@@ -54,7 +57,7 @@ const getOwnerId = () => {
 }
 //获取当前登录用户的ownerid
 const getOpenId = () => {
-  return new Promise(function (resolve, reject) {
+  return new Promise(function(resolve, reject) {
     wx.getStorage({
       key: 'openid',
       success: res => {

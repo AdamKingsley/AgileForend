@@ -3,10 +3,12 @@ App({
   onLaunch: function () {
   },
   globalData:{
+    version:"dev",
+    wx_id:null,
     userInfo:null,
-    productIp:"school.yuncaogangmu.com",
-    productPort:"443",
+    prodIp:"school.yuncaogangmu.com",
+    prodPort:"443",
     devIp:"localhost",
-    devPort:"8102",
+    devPort:"9999",
   }
 })
