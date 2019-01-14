@@ -1,0 +1,87 @@
+.nav {
+  background-color: #fff;
+}
+
+.top {
+  width: 140rpx;
+  height: 140rpx;
+  padding: 40rpx;
+  margin: 25rpx auto 25rpx auto;
+  align-items: center;
+}
+
+/* .top open-data {
+  height: 200rpx;
+  width: 200rpx;
+  border-radius: 100rpx;
+  border: 5rpx solid #fac3cc;
+} */
+
+.nickname {
+  margin-bottom: 10rpx;
+  text-align: center;
+}
+
+.item {
+  height: 70rpx;
+  background-color: #fff;
+  margin: 20rpx;
+  display: flex;
+  border-radius: 20rpx;
+}
+
+.left {
+  display: flex;
+  justify-content: flex-start;
+  flex-grow: 1;
+}
+
+.right {
+  display: flex;
+  justify-content: flex-end;
+  flex-grow: 1;
+  color: #ccc;
+  margin-right: 20rpx;
+}
+
+.textarea {
+  font-size: 35rpx;
+  margin: 0 8% 0% 8%;
+  padding: 3% 3% 3% 3%;
+  background-color: white;
+  width: 76%;
+  height: 180rpx;
+  border: 5rpx solid #fac3cc;
+  border-radius: 10rpx;
+}
+
+.button {
+  /* margin: 20%; */
+  border-radius: 40rpx;
+  border: 3rpx solid #fac3cc;
+  background-color: #f33;
+  color: white;
+  position: fixed;
+  bottom: 5%;
+  margin: 0 10%;
+  width: 80%;
+}
+
+.personal {
+  font-size: 35rpx;
+  margin: 0 8% 0% 8%;
+  padding: 2% 0 2% 2%;
+  background-color: white;
+  width: 80%;
+  height: 350rpx;
+  border: 5rpx solid #fac3cc;
+  border-radius: 10rpx;
+}
+
+.section .item {
+  height: 70rpx;
+  background-color: #fff;
+  margin: 20rpx 0 0 10%;
+  display: flex;
+  border-radius: 20rpx;
+}

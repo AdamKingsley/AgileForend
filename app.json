@@ -5,7 +5,8 @@
     "pages/notify/notify",
     "pages/init_info/init_info",
     "pages/city_selector/city_selector",
-    "pages/sight_detail/sight_detail"
+    "pages/sight_detail/sight_detail",
+    "pages/personalInfo/personalInfo"
   ],
   "window": {
     "backgroundTextStyle": "light",
