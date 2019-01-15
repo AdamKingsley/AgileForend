@@ -6,7 +6,12 @@
     "pages/init_info/init_info",
     "pages/city_selector/city_selector",
     "pages/sight_detail/sight_detail",
-    "pages/personalInfo/personalInfo"
+    "pages/mypage/mypage",
+    "pages/personalInfo/personalInfo",
+    "pages/mytour/mytour",
+    "pages/mycorporation/mycorporation",
+    "pages/historytour/historytour",
+    "pages/mycomment/mycomment"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -40,7 +45,7 @@
         "selectedIconPath": "images/group_focus.png"
       },
       {
-        "pagePath": "pages/notify/notify",
+        "pagePath": "pages/mypage/mypage",
         "text": "个人",
         "iconPath": "images/user.png",
         "selectedIconPath": "images/user_focus.png"

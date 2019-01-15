@@ -1,0 +1,52 @@
+
+<view class="container mypage">
+
+  <view>
+    <view class="user flex-wrp">
+      <view class="avatar flex-item">
+        <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+      </view>
+      <view class="user-info flex-item" bindtap="bindPersonalInfoTap">
+        <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+        <text class="edit">查看或编辑个人主页</text>
+      </view>
+    </view>
+  </view>
+
+
+
+  <view class="my">
+    <view class="my-item flex-wrp" bindtap="bindMyTour">
+      <view class="myitem-icon flex-item" >
+        <image src="../../images/flag.png"></image>
+      </view>
+      <view class="myitem-name flex-item">
+        <text>我的出游</text>
+      </view>
+    </view>
+    <view class="my-item flex-wrp" bindtap="bindMyCorporation">
+      <view class="myitem-icon flex-item" >
+        <image src="../../images/group.png"></image>
+      </view>
+      <view class="myitem-name flex-item">
+        <text>我的社团</text>
+      </view>
+    </view>
+    <view class="my-item flex-wrp">
+      <view class="myitem-icon flex-item" >
+        <image src="../../images/historytour2.png"></image>
+      </view>
+      <view class="myitem-name flex-item" bindtap='bindHistoryTour'>
+        <text>历史出游</text>
+      </view>
+    </view>
+    <view class="my-item flex-wrp">
+      <view class="myitem-icon flex-item" >
+        <image src="../../images/comment3.png"></image>
+      </view>
+      <view class="myitem-name flex-item" bindtap='bindMyComment'>
+        <text>我的评价</text>
+      </view>
+    </view>
+  </view>
+</view>
