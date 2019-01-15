@@ -11,7 +11,9 @@
     "pages/mytour/mytour",
     "pages/mycorporation/mycorporation",
     "pages/historytour/historytour",
-    "pages/mycomment/mycomment"
+    "pages/mycomment/mycomment",
+    "pages/club/club",
+    "pages/tour/tour"
   ],
   "window": {
     "backgroundTextStyle": "light",

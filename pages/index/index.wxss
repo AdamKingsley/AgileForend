@@ -1,10 +1,14 @@
 /**index.wxss**/
 
-.container {
+/* .container {
   padding: 0;
   font-size: 14rpx;
   background: #f0f4f3;
   color: #000;
+} */
+
+page {
+  background: white;
 }
 
 .searchbar-result {
@@ -22,7 +26,7 @@
 
 .location {
   display: inherit;
-  background: #EFEFF4;
+  background: #efeff4;
 }
 
 .location image {
@@ -47,5 +51,31 @@
   font-weight: bold;
   background-color: #efeff4;
   /* border-top: 1rpx solid #d7d6dc; */
+  border-bottom: 1rpx solid #d7d6dc;
+}
+
+.filter-view {
+  text-align: center;
+  background: #efeff4;
+  border-bottom: 1rpx solid #d7d6dc;
+}
+
+.index-top {
+  position: fixed;
+  top: 0;
+  width: 750rpx;
+  /* height:175rpx; */
+  z-index: 100;
+}
+
+/* 距离上面搜索框和筛选框的距离 */
+
+.index-bottom {
+  position: absolute;
+  margin-top: 173rpx;
+  z-index: 10;
+}
+
+.weui-panel__bd {
   border-bottom: 1rpx solid #d7d6dc;
 }
