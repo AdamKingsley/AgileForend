@@ -7,8 +7,8 @@
   </view>
 
   <view class="welcome">
-    <text>南大问答社区</text>
-    <text class='small'>登陆后为您提供优质的问答服务~</text>
+    <text>协同出游小程序</text>
+    <text class='small'>登陆后跟志同道合的小伙伴一起出游吧~</text>
   </view>
   <!-- </view> -->
   <view class="loginBtn">
