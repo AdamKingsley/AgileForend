@@ -35,13 +35,13 @@
         "selectedIconPath": "images/home_focus.png"
       },
       {
-        "pagePath": "pages/index/index",
+        "pagePath": "pages/tour/tour",
         "text": "出游",
         "iconPath": "images/tour.png",
         "selectedIconPath": "images/tour_focus.png"
       },
       {
-        "pagePath": "pages/notify/notify",
+        "pagePath": "pages/club/club",
         "text": "社团",
         "iconPath": "images/group.png",
         "selectedIconPath": "images/group_focus.png"
