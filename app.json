@@ -12,7 +12,9 @@
     "pages/historytour/historytour",
     "pages/mycomment/mycomment",
     "pages/club/club",
-    "pages/tour/tour"
+    "pages/tour/tour",
+    "pages/create_tour/createTour",
+    "pages/tour_detail/tourDetail"
   ],
   "window": {
     "backgroundTextStyle": "light",
