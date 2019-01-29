@@ -42,11 +42,15 @@ function postData(url, data) {
 }
 
 function showToast(title, icon, duration = 2000) {
-  wx.showToast({
+  let data = {
     title: title,
-    icon: fail,
+    icon: icon,
     duration: 2000
-  });
+  };
+  if(icon=="fail"){
+    data.image='../../images/fail.png'
+  }
+  wx.showToast(data);
 }
 
 //获取当前登录用户的ownerid
@@ -80,4 +84,5 @@ const getOpenId = () => {
 
 module.exports.getData = getData;
 module.exports.postData = postData;
-module.exports.getOwnerId = getOwnerId
+module.exports.getOwnerId = getOwnerId;
+module.exports.showToast = showToast;

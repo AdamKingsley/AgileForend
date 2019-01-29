@@ -1,72 +1,76 @@
-var app=getApp()
+var app = getApp()
 var util = require("../../utils/util.js")
 
 Page({
   data: {
-    icon_url:"../../images/ICON.png",
-    userInfo:{}
+    icon_url: "../../images/ICON.png",
+    userInfo: {}
   },
   checkSession(e) {
-    console.log("check session")
-    wx.checkSession({
-      success: res => {
-        wx.login({
-          success: res =>{
-            console.log(res)
-            let jsonData = {
-              code: res.code,
-            }
-            let url = "user/open";
-            util.postData(url,jsonData).then(res => {
-              console.log(res)
-              wx.setStorage({
-                key: 'openid',
-                data: res.data.data.openid,
-              })
-              wx.setStorage({
-                key: 'ownerid',
-                data: res.data.data.id,
-              })
-            })
-          }
-        })
-        console.log('before switch to index')
-        wx.switchTab({
-          url: '/pages/index/index',
-        })
-      },
-      fail: res => {
-      }
-    })
-  },
-  login(e) {
-    console.log(e)
-    wx.login({
-      success: res => {
-        let jsonData={
-          'code':res.code,
-          'userInfo': e.detail.userInfo
-        }
-        let url = "user/login"
-        util.postData(url,jsonData).then(res=>{
-          wx.setStorage({
-            key: 'openid',
-            data: res.data.data.openid,
-          })
-          wx.setStorage({
-            key: 'ownerid',
-            data: res.data.data.id,
-          })
-          // wx.setStorageSync('openid', res.data.data.openid)
-          // wx.setStorageSync('ownerid', res.data.data.id)
+    console.log("check session ...")
+    // util.showToast("hello", "fail", 2000);
+    let that = this;
+    //TODO 这里有点小问题,暂不考虑
+    if (this.data.userInfo) {
+      wx.checkSession({
+        success: res => {
+          console.log("session尚未失效！");
+          // console.log('before switch to index')
           wx.switchTab({
             url: '/pages/index/index',
           })
-        })
-      }
-    })
+        },
+        fail: res => {
+          console.log("session失效！");
+          //util.showToast("对话失效!", "fail", 2000);
+        }
+      });
+    }
   },
-  onLoad: function (options) {
+  login(e) {
+    console.log(e);
+    let userinfo = e.detail.userInfo;
+    if (userinfo) {
+      console.log("授权点击确认！")
+      //点击了授权，然后开始登录
+      wx.login({
+        success: res => {
+          console.log(res);
+          if (res.code) {
+            //获取code成功，请求后台获取session
+            let jsonData = {
+              'code': res.code,
+              'userInfo': userinfo
+            };
+            console.log(jsonData);
+            let url = "user/login"
+            util.postData(url, jsonData).then(res => {
+              console.log("登录信息：",res);
+              //想了想，这里同步,有助于用户信息的获取,确认信息都存到缓存之后再跳我觉得满蛮好的
+              wx.setStorageSync("openid", res.data.data.openid);
+              wx.setStorageSync("ownerid", res.data.data.ownerid);
+              wx.switchTab({
+                url: '/pages/index/index',
+              });
+            }).catch(e => {
+              util.showToast("登录失败！", "fail", 2000);
+            });
+          } else {
+            util.showToast("登录失败！", "fail", 2000);
+          }
+        },
+        fail: res => {
+          util.showToast("获取用户信息失败！", "fail", 2000);
+        }
+      });
+    } else {
+      console.log("授权点击取消！")
+    }
+  },
+  onLoad: function(options) {
+    this.checkSession()
+  },
+  onShow: function(options) {
     this.checkSession()
   },
 })
