@@ -41,6 +41,14 @@ function postData(url, data) {
   })
 }
 
+function showToast(title, icon, duration = 2000) {
+  wx.showToast({
+    title: title,
+    icon: fail,
+    duration: 2000
+  });
+}
+
 //获取当前登录用户的ownerid
 const getOwnerId = () => {
   return new Promise(function(resolve, reject) {
@@ -69,6 +77,7 @@ const getOpenId = () => {
     })
   })
 }
+
 module.exports.getData = getData;
 module.exports.postData = postData;
 module.exports.getOwnerId = getOwnerId

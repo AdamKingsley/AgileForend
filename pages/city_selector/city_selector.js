@@ -6,93 +6,21 @@ Page({
     inputShowed: false,
     select_text: "",
     select_province: {
-      id: 1,
+      id: '320000',
       itemName: '江苏省'
     },
     select_city: {
-      id: 1,
-      itemName: '南京'
+      id: '320100',
+      itemName: '南京市'
     },
     province_list_visiable: false,
-    province_list: [{
-        id: 1,
-        itemName: '北京市',
-        content: '',
-      }, {
-        id: 2,
-        itemName: '江苏省',
-        content: '',
-      },
-      {
-        id: 3,
-        itemName: '天津市',
-        content: '',
-      },
-      {
-        id: 4,
-        itemName: '重庆市',
-        content: '',
-      },
-      {
-        id: 5,
-        itemName: '上海市',
-        content: '',
-      },
-      {
-        id: 6,
-        itemName: '山东省',
-        content: '',
-      }
-    ],
-    city_list: [{
-      id: 1,
-      itemName: '南京',
-      content: '',
-    }, {
-      id: 2,
-      itemName: '苏州',
-      content: '',
-    }, {
-      id: 3,
-      itemName: '无锡',
-      content: '',
-    }, {
-      id: 4,
-      itemName: '常州',
-      content: '',
-    }, {
-      id: 5,
-      itemName: '扬州',
-      content: '',
-    }, {
-      id: 6,
-      itemName: '泰州',
-      content: '',
-    }, {
-      id: 7,
-      itemName: '宿迁',
-      content: '',
-    }, {
-      id: 8,
-      itemName: '济南',
-      content: '',
-    }, {
-      id: 9,
-      itemName: '烟台',
-      content: '',
-    }, {
-      id: 10,
-      itemName: '临沂',
-      content: '',
-    }]
+    province_list: [],
+    city_list: []
   },
 
   //点击最外层列表展开收起
   listTap(e) {
     console.log('触发了最外层');
-    // let Index = e.currentTarget.dataset.parentindex, //获取点击的下标值
-    // visiable = this.data.province_list_visiable;
-    // visiable = !visiable || false; 
     //变换其打开、关闭的状态;
     this.setData({
       province_list_visiable: !this.data.province_list_visiable || false
@@ -101,11 +29,18 @@ Page({
   select_province(e) {
     console.log(e);
     this.listTap(e);
+    let that = this;
     this.setData({
       select_province: {
         id: e.currentTarget.dataset.index,
         itemName: e.currentTarget.dataset.name
       }
+    });
+    this.cityList(e.currentTarget.dataset.index).then(()=>{
+      that.setData({select_city:{
+        id : that.data.city_list[0].id,
+        itemName : that.data.city_list[0].itemName,
+      }})
     });
     //选择省份之后应该向后端请求该省份包含的城市
     //然后展示城市列表
@@ -158,6 +93,43 @@ Page({
         itemName: options.city ? options.city : this.data.select_city.itemName,
       }
     });
+    this.provinceList();
+    //对应的城市进行刷新
+    this.cityList(options.provinceId ? options.provinceId : this.data.select_province.id);
+  },
+  cityList(province_id){
+    let that = this;
+    // let province_id = that.getData.select_province.id;
+    return util.getData("address/cities?province_id="+province_id).then(response=>{
+      //获取省份
+      console.log('response', response)
+      if (response.data.code == '200') {
+        that.setData({
+          city_list: response.data.data,
+        })
+      } else {
+        util.showToast("系统内部异常！", "fail", 2000);
+      }
+    }).catch(e=>{
+      util.showToast("网络请求失败！", "fail", 2000);
+    });
+  },
+  provinceList: function() {
+    let that = this;
+    util.getData('address/provinces').then(response => {
+      //获取省份
+      console.log('response',response)
+      if(response.data.code=='200'){
+        that.setData({
+          province_list:response.data.data,
+        })
+      }else{
+        util.showToast("系统内部异常！","fail",2000);
+      }
+    }).catch(e => {
+      console.log(e);
+      util.showToast("网络请求失败！", "fail", 2000);
+    })
   },
   showInput: function() {
     this.setData({
