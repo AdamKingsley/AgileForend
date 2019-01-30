@@ -31,6 +31,8 @@ Page({
     console.log(e);
     let userinfo = e.detail.userInfo;
     if (userinfo) {
+      //设置微信默认获取到的userinfo到全局的globalData的userInfo中
+      // app.globalData.userInfo = userinfo;
       console.log("授权点击确认！")
       //点击了授权，然后开始登录
       wx.login({
@@ -45,13 +47,23 @@ Page({
             console.log(jsonData);
             let url = "user/login"
             util.postData(url, jsonData).then(res => {
-              console.log("登录信息：",res);
+              console.log("登录信息：", res);
+              data = res.data.data;
               //想了想，这里同步,有助于用户信息的获取,确认信息都存到缓存之后再跳我觉得满蛮好的
-              wx.setStorageSync("openid", res.data.data.openid);
-              wx.setStorageSync("ownerid", res.data.data.ownerid);
-              wx.switchTab({
-                url: '/pages/index/index',
-              });
+              wx.setStorageSync("openid", data.openid);
+              wx.setStorageSync("userid", data.userid);
+              //之前初始化过直接进入index首页
+              if (data.userid) {
+                wx.switchTab({
+                  url: '/pages/index/index',
+                });
+              } else {
+                //尚未初始化过，进入init_info界面
+                app.globalData.userInfo = userinfo;
+                wx.navigateTo({
+                  url: '/pages/init_info/init_info',
+                });
+              }
             }).catch(e => {
               util.showToast("登录失败！", "fail", 2000);
             });
@@ -68,9 +80,9 @@ Page({
     }
   },
   onLoad: function(options) {
-    this.checkSession()
+    this.checkSession();
   },
   onShow: function(options) {
-    this.checkSession()
+    this.checkSession();
   },
 })
