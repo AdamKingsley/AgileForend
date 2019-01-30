@@ -1,2 +1,10 @@
 <!--pages/club_detail/club_detail.wxml-->
-<text>pages/club_detail/club_detail.wxml</text>
+<view class="page__bd index-bottom">
+  <view class="weui-panel weui-panel_access">
+    <view class="weui-panel__bd" wx:for='{{clubs}}' wx:key="id">
+        <view class="weui-media-box__hd weui-media-box__hd_in-appmsg sight_image">
+          <image class="weui-media-box__thumb" src="{{item.pic}}" />
+        </view>
+    </view>
+  </view>
+</view>
