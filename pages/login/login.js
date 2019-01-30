@@ -59,9 +59,13 @@ Page({
                 });
               } else {
                 //尚未初始化过，进入init_info界面
+                //将微信登陆默认读取到的微信自身的信息设置到globalData中
                 app.globalData.userInfo = userinfo;
-                wx.navigateTo({
-                  url: '/pages/init_info/init_info',
+                // wx.navigateTo({
+                //   url: '/pages/init_info/init_info',
+                // });
+                wx.switchTab({
+                  url: '/pages/index/index',
                 });
               }
             }).catch(e => {
