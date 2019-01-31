@@ -119,7 +119,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log('index onload');
+    console.log('club onload');
     console.log(app.globalData)
     this.setData({
       city: app.globalData.city ? app.globalData.city.itemName : this.data.city,
@@ -159,5 +159,11 @@ Page({
     this.setData({
       select_text: e.detail.value
     });
+  },
+  goToCreateClub:function(parm){
+    console.log('a');
+    wx.navigateTo({
+      url: '/pages/createClub/createClub',
+    })
   }
 })

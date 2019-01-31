@@ -154,3 +154,18 @@ page {
   padding: 0 5rpx;
   border-radius: 5rpx;
 }
+
+.circle{
+    float: right;
+    position: fixed;
+    bottom: 20px;
+    right: 10px;
+    width: 40px;
+    height: 40px;
+    font-size: 17px;
+    background-color: #ffffff;
+    border: 0 solid #ffffff;
+    border-radius: 20px;
+    box-shadow: 4px 1px 1px #cccccc;
+
+}

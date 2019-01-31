@@ -85,5 +85,8 @@
         </view>
       </navigator>
     </view>
+    <button bindtap='goToCreateClub' type="primary" class="circle" >+</button>
   </view>
 </view>
+
+
