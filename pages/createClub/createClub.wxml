@@ -17,30 +17,16 @@
         <view class="weui-label">社团介绍</view>
       </view>
       <view class="weui-cell__bd">
-        <input placeholder-class='placeholder' class="des-input" placeholder="请输入社团介绍" bindinput='bindName' />
+        <input placeholder-class='placeholder' class="des-input" placeholder="请输入社团介绍" bindinput='bindDes' />
       </view>
     </view>
-    <!-- <view class="weui-cell weui-cell_input">
-      <view class="weui-cell__hd">
-        <view class="weui-label">社团介绍</view>
-      </view>
-      <view class="weui-cell__bd">
-        <radio-group bindchange='sex_change'>
-          <!-- 事件绑定 -->
-          <!-- <label class="radio" wx:for="{{sex_list}}" wx:key="{{item.value}}">
-            <radio class="ws-radio" value="{{item.value}}" checked='{{item.checked}}' />
-            <text>{{item.name}}</text>
-          </label>
-        </radio-group>
-      </view>
-    </view> -->
 
     <view class="weui-cell weui-cell_input">
       <view class="weui-cell__hd">
         <view class="weui-label">招收人数</view>
       </view>
       <view class="weui-cell__bd">
-        <input placeholder-class='placeholder' class="weui-input" placeholder="请输入招收人数" bindinput='bindVcode' />
+        <input placeholder-class='placeholder' class="weui-input" placeholder="请输入招收人数" bindinput='bindLimit' />
       </view>
     </view>
 
