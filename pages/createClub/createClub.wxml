@@ -1,2 +1,66 @@
 <!--pages/createClub/createClub.wxml-->
-<text>pages/createClub/createClub.wxml</text>
+<view class='container'>
+
+  <view class='basicinfo'>
+    <!-- 基础信息设置 -->
+
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <view class="weui-label">社团名称</view>
+      </view>
+      <view class="weui-cell__bd">
+        <input placeholder-class='placeholder' class="weui-input" placeholder="请输入社团名称" bindinput='bindName' />
+      </view>
+    </view>
+    <view class="myInput">
+      <view class="weui-cell__hd">
+        <view class="weui-label">社团介绍</view>
+      </view>
+      <view class="weui-cell__bd">
+        <input placeholder-class='placeholder' class="des-input" placeholder="请输入社团介绍" bindinput='bindName' />
+      </view>
+    </view>
+    <!-- <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <view class="weui-label">社团介绍</view>
+      </view>
+      <view class="weui-cell__bd">
+        <radio-group bindchange='sex_change'>
+          <!-- 事件绑定 -->
+          <!-- <label class="radio" wx:for="{{sex_list}}" wx:key="{{item.value}}">
+            <radio class="ws-radio" value="{{item.value}}" checked='{{item.checked}}' />
+            <text>{{item.name}}</text>
+          </label>
+        </radio-group>
+      </view>
+    </view> -->
+
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <view class="weui-label">招收人数</view>
+      </view>
+      <view class="weui-cell__bd">
+        <input placeholder-class='placeholder' class="weui-input" placeholder="请输入招收人数" bindinput='bindVcode' />
+      </view>
+    </view>
+
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <view class="weui-label">上传图片</view>
+      </view>
+      <view class="weui-cell__bd">
+        <!-- <input placeholder-class='placeholder' class="weui-input" placeholder="" bindinput='bindVcode' /> -->
+        <button type="primary" class='upload'>选择图片</button>
+      </view>
+    </view>
+    
+
+  </view>
+
+  <!-- </view> -->
+  <view class="confirmBtn">
+    <button type="primary" bindtap="confirm">
+      立即创建
+    </button>
+  </view>
+</view>

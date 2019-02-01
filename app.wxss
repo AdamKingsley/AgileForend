@@ -9,7 +9,7 @@
   justify-content: space-between;
   /*padding: 200rpx 0;*/
   box-sizing: border-box;
-  background: #f0f4f3;
+  /* background: #f0f4f3; */
 }
 
 @font-face {
