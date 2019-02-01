@@ -16,9 +16,15 @@ Page({
         success: res => {
           console.log("session尚未失效！");
           // console.log('before switch to index')
-          wx.switchTab({
-            url: '/pages/index/index',
-          })
+          if (wx.getStorageSync("userid")) {
+            wx.switchTab({
+              url: '/pages/index/index',
+            });
+          } else {
+            wx.navigateTo({
+              url: '/pages/init_info/init_info',
+            });
+          }
         },
         fail: res => {
           console.log("session失效！");
@@ -48,12 +54,23 @@ Page({
             let url = "user/login"
             util.postData(url, jsonData).then(res => {
               console.log("登录信息：", res);
-              data = res.data.data;
+              let data = res.data.data;
               //想了想，这里同步,有助于用户信息的获取,确认信息都存到缓存之后再跳我觉得满蛮好的
               wx.setStorageSync("openid", data.openid);
               wx.setStorageSync("userid", data.userid);
               //之前初始化过直接进入index首页
               if (data.userid) {
+                //先获取userinf放到app的globaldata中
+                util.getData('user/' + data.userid).then(res => {
+                  console.log(res);
+                  if(res.data.code=='200'){
+                    app.globalData.userinfo = res.data.data;
+                  }else{
+                    util.showToast("获取用户信息失败！","fail",2000);
+                  }
+                }).catch(e => {
+                  util.showToast("获取用户信息失败！", "fail", 2000);
+                });
                 wx.switchTab({
                   url: '/pages/index/index',
                 });
@@ -61,14 +78,13 @@ Page({
                 //尚未初始化过，进入init_info界面
                 //将微信登陆默认读取到的微信自身的信息设置到globalData中
                 app.globalData.userInfo = userinfo;
-                // wx.navigateTo({
-                //   url: '/pages/init_info/init_info',
-                // });
-                wx.switchTab({
-                  url: '/pages/index/index',
+                console.log(app.globalData.userInfo);
+                wx.navigateTo({
+                  url: '/pages/init_info/init_info',
                 });
               }
             }).catch(e => {
+              console.log(e);
               util.showToast("登录失败！", "fail", 2000);
             });
           } else {

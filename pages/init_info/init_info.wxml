@@ -1,2 +1,91 @@
 <!--pages/init_info/init_info.wxml-->
-<text>pages/init_info/init_info.wxml</text>
+<view class='container'>
+  <view class='avatar'>
+    <image src='{{userinfo.avatar}}' bindtap="chooseAvatar"></image>
+  </view>
+  <view class='basicinfo'>
+    <!-- 基础信息设置 -->
+    <!-- username -->
+    <view class='username'>
+      <input placeholder-class='placeholder' class="{{status==0 ? '':'focus'}}" placeholder='输入用户名...' value='{{userinfo.nickname}}' bindfocus="focus" bindblur='blur' bindinput='bindNickname'></input>
+    </view>
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <view class="weui-label">姓名</view>
+      </view>
+      <view class="weui-cell__bd">
+        <input placeholder-class='placeholder' class="weui-input" placeholder="请输入真实姓名" bindinput='bindName' />
+      </view>
+    </view>
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <view class="weui-label">性别</view>
+      </view>
+      <view class="weui-cell__bd">
+        <radio-group bindchange='sex_change'>
+          <!-- 事件绑定 -->
+          <label class="radio" wx:for="{{sex_list}}" wx:key="{{item.value}}">
+            <radio class="ws-radio" value="{{item.value}}" checked='{{item.checked}}' />
+            <text>{{item.name}}</text>
+          </label>
+        </radio-group>
+      </view>
+    </view>
+
+
+    <view class="weui-cell weui-cell_input weui-cell_vcode">
+      <view class="weui-cell__hd">
+        <view class="weui-label">手机号</view>
+      </view>
+      <view class="weui-cell__bd">
+        <input placeholder-class='placeholder' class="weui-input" placeholder="请输入手机号" bindinput='bindTel' />
+      </view>
+      <view class="weui-cell__ft">
+        <!-- <view class="weui-vcode-btn">获取验证码</view> -->
+        <button type='primary' class='weui-vcode-btn' bindtap='send_vcode' disabled='{{vcode_btn_disabled}}'>{{vcode_btn_text}}</button>
+      </view>
+    </view>
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <view class="weui-label">验证码</view>
+      </view>
+      <view class="weui-cell__bd">
+        <input placeholder-class='placeholder' class="weui-input" placeholder="请输入验证码" bindinput='bindVcode' />
+      </view>
+    </view>
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <view class="weui-label">学校</view>
+      </view>
+      <view class="weui-cell__bd">
+        <input placeholder-class='placeholder' class="weui-input" placeholder="请输入在读大学" bindinput='bindSchool' />
+      </view>
+    </view>
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <view class="weui-label">省市区</view>
+      </view>
+      <view class="weui-cell__bd">
+        <picker mode="multiSelector" value="{{area_value}}" range="{{[province_list,city_list,area_list]}}" range-key="itemName" bindchange="area_change" bindcolumnchange="area_column_change">
+          <view class="weui-input">{{userinfo.province==userinfo.city?userinfo.city+userinfo.area:userinfo.province+userinfo.city+userinfo.area}}</view>
+        </picker>
+      </view>
+    </view>
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <view class="weui-label">住址</view>
+      </view>
+      <view class="weui-cell__bd" style='margin-bottom:30rpx'>
+        <input placeholder-class='placeholder' class="weui-input" placeholder="请输入当前住址" bindinput="bindAddress" />
+      </view>
+    </view>
+
+  </view>
+
+  <!-- </view> -->
+  <view class="confirmBtn">
+    <button type="warn" bindtap="confirm">
+      个人信息确认
+    </button>
+  </view>
+</view>
