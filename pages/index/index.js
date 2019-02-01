@@ -1,6 +1,6 @@
 //index.js 主页
-var util = require('../../utils/util.js')
-var app = getApp()
+var util = require('../../utils/util.js');
+var app = getApp();
 Page({
   data: {
     inputShowed: false,
@@ -9,62 +9,7 @@ Page({
     provinceId: '320000',
     city: '南京市',
     cityId: '320100',
-    sights: [{
-      id: 1,
-      pic: 'http://localhost:9999/pics/sight/sight_template.jpg',
-      name: "总统府",
-      description: "这里美如画，这里贼好玩，这里的山路十八弯，这里的水路九连环",
-      score: 4.7,
-      price: 20,
-      labels:['4A景区','名楼','俯瞰长江']
-    }, {
-      id: 2,
-      name: '夫子庙',
-      pic: '../../images/sight_template.jpg',
-      description: "这里美如画，这里贼好玩，这里的山路十八弯，这里的水路九连环",
-      score: 3.2,
-      price: 20,
-    }, {
-      id: 3,
-      name: '老门东',
-      pic: '../../images/sight_template.jpg',
-      description: "这里美如画，这里贼好玩，这里的山路十八弯，这里的水路九连环",
-      score: 5.0,
-      price: 20,
-    }, {
-      id: 4,
-      name: "狮子桥",
-      pic: '../../images/sight_template.jpg',
-      description: "这里美如画，这里贼好玩，这里的山路十八弯，这里的水路九连环",
-      score: 4.7,
-      price: 0,
-    }, {
-      id: 5,
-      name: "中山陵",
-      pic: '../../images/sight_template.jpg',
-      description: "这里美如画，这里贼好玩，这里的山路十八弯，这里的水路九连环",
-      score: 1.7,
-    }, {
-      id: 6,
-      name: "雨花台",
-      pic: '../../images/sight_template.jpg',
-      description: "这里美如画，这里贼好玩，这里的山路十八弯，这里的水路九连环",
-      score: 3.7,
-    }, {
-      id: 7,
-      pic: '../../images/sight_template.jpg',
-      name: "燕子矶",
-      description: "这里美如画，这里贼好玩，这里的山路十八弯，这里的水路九连环",
-      score: 5.0,
-      price: 150,
-    }, {
-      id: 8,
-      name: "阅江楼",
-      pic: '../../images/sight_template.jpg',
-      description: "这里美如画，这里贼好玩，这里的山路十八弯，这里的水路九连环",
-      score: 5.0,
-      price: 100,
-    }]
+    sights: []
   },
   /**
    * 生命周期函数--监听页面加载
@@ -78,9 +23,27 @@ Page({
       province: app.globalData.province ? app.globalData.province.itemName : this.data.province,
       provinceId: app.globalData.province ? app.globalData.province.id : this.data.provinceId,
     });
+    this.init_sights();
   },
+  init_sights: function() {
+    let that = this;
+    //TODO 之后改为分页||暂时为了应付检查先不分页
+    util.getData('sight/all/' + this.data.cityId).then(res => {
+      if (res.data.code == 200) {
+        console.log(res);
+        this.setData({
+          sights: res.data.data
+        });
+      } else {
+        util.showToast("获取数据出错！", "fail", 200);
+      }
+    }).catch(e => {
+      util.showToast("获取数据出错！", "fail", 200);
+    });
+  },
+
   onShow: function(options) {
-    this.onLoad(options);
+    //this.onLoad(options);
   },
   selectCity: function() {
     wx.navigateTo({
