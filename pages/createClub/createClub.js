@@ -72,9 +72,9 @@ Page({
     });
   },
 
-//绑定社团名称
+  //绑定社团名称
   bindName: function (e) {
-      this.change_club_data('name', e.detail.value);
+    this.change_club_data('name', e.detail.value);
   },
 
   bindDes: function (e) {
@@ -135,4 +135,4 @@ Page({
   onShareAppMessage: function () {
 
   }
-})
+}) 

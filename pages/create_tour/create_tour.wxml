@@ -1,0 +1,77 @@
+<view class='container'>
+
+  <view class='basicinfo'>
+    <!-- 基础信息设置 -->
+
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <view class="weui-label">出游名称</view>
+      </view>
+      <view class="weui-cell__bd">
+        <input placeholder-class='placeholder' class="weui-input" placeholder="请输入出游名称" bindinput='bindName' />
+      </view>
+    </view>
+    <view class="myInput">
+      <view class="weui-cell__hd">
+        <view class="weui-label">出游介绍</view>
+      </view>
+      <view class="weui-cell__bd">
+        <input placeholder-class='placeholder' class="des-input" placeholder="请输入出游介绍" bindinput='bindDes' />
+      </view>
+    </view>
+
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <view class="weui-label">招收人数</view>
+      </view>
+      <view class="weui-cell__bd">
+        <input placeholder-class='placeholder' class="weui-input" placeholder="请输入招收人数" bindinput='bindLimit' />
+      </view>
+    </view>
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <view class="weui-label">开始时间</view>
+      </view>
+      <view class="weui-cell__bd">
+        <input placeholder-class='placeholder' class="weui-input" placeholder="请输入开始人数" bindinput='bindLimit' />
+      </view>
+    </view>
+
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <view class="weui-label">结束时间</view>
+      </view>
+      <view class="weui-cell__bd">
+        <input placeholder-class='placeholder' class="weui-input" placeholder="请输入结束时间" bindinput='bindLimit' />
+      </view>
+    </view>
+
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <view class="weui-label">所属社团</view>
+      </view>
+      <view class="weui-cell__bd">
+        <input placeholder-class='placeholder' class="weui-input" placeholder="请选择所属社团" bindinput='bindLimit' />
+      </view>
+    </view>
+
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <view class="weui-label">上传图片</view>
+      </view>
+      <view class="weui-cell__bd">
+        <!-- <input placeholder-class='placeholder' class="weui-input" placeholder="" bindinput='bindVcode' /> -->
+        <button type="primary" class='upload'>选择图片</button>
+      </view>
+    </view>
+
+
+  </view>
+
+  <!-- </view> -->
+  <view class="confirmBtn">
+    <button type="primary" bindtap="confirm">
+      立即创建
+    </button>
+  </view>
+</view> 

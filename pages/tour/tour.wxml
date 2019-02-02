@@ -1,2 +1,89 @@
-<!--pages/tour/tour.wxml-->
-<text>pages/tour/tour.wxml</text>
+<!--tour.wxml-->
+<!-- 搜索框 -->
+<view class="page__bd index-top">
+  <view class='location' bindtap='selectCity'>
+    <image src="../../images/location.png"></image>
+    <text>{{city}}</text>
+  </view>
+  <view class="weui-search-bar">
+    <view class="weui-search-bar__form">
+      <view class="weui-search-bar__box">
+        <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
+        <input type="text" class="weui-search-bar__input" placeholder="搜索景点" value="{{select_text}}" focus="{{inputShowed}}" bindinput="inputTyping" />
+        <view class="weui-icon-clear" wx:if="{{select_text.length > 0}}" bindtap="clearInput">
+          <icon type="clear" size="14"></icon>
+        </view>
+      </view>
+      <label class="weui-search-bar__label" hidden="{{inputShowed}}" bindtap="showInput">
+        <icon class="weui-icon-search" type="search" size="14"></icon>
+        <view class="weui-search-bar__text">搜索出游</view>
+      </label>
+    </view>
+    <view class="weui-search-bar__cancel-btn" hidden="{{!inputShowed}}" bindtap="hideInput">取消</view>
+  </view>
+  <view class="weui-cells searchbar-result" wx:if="{{select_text.length > 0}}">
+    <navigator url="" class="weui-cell" hover-class="weui-cell_active">
+      <view class="weui-cell__bd">
+        <view>郑云龙</view>
+      </view>
+    </navigator>
+    <navigator url="" class="weui-cell" hover-class="weui-cell_active">
+      <view class="weui-cell__bd">
+        <view>刘令飞</view>
+      </view>
+    </navigator>
+    <navigator url="" class="weui-cell" hover-class="weui-cell_active">
+      <view class="weui-cell__bd">
+        <view>徐丽东</view>
+      </view>
+    </navigator>
+    <navigator url="" class="weui-cell" hover-class="weui-cell_active">
+      <view class="weui-cell__bd">
+        <view>丁臻滢</view>
+      </view>
+    </navigator>
+  </view>
+
+  <view class="filter-view">筛选部分组件:未实现</view>
+</view>
+
+<!-- 出游列表 -->
+
+<view class="page__bd index-bottom">
+  <view class="weui-panel weui-panel_access">
+    <view class="weui-panel__bd" wx:for='{{tours}}' wx:key="id">
+      <navigator url="../tour_detail/tour_detail?tourId={{item.id}}&tourName={{item.name}}" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
+        <view class="weui-media-box__hd weui-media-box__hd_in-appmsg sight_image">
+          <image class="weui-media-box__thumb" src="{{item.pic}}" />
+        </view>
+        <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+          <view class="weui-media-box__title">
+            <text>{{item.name}}</text>
+            <view wx:if="{{item.score>=4.5}}">
+              <view class="score_red">{{item.score}}</view>
+            </view>
+            <view wx:elif="{{item.score<=3.0}}">
+              <view class="score_green">{{item.score}}</view>
+            </view>
+            <view wx:else>
+              <view class="score_yellow">{{item.score}}</view>
+            </view>
+          </view>
+          <view class='weui-media-box__label'>
+            <view class="tour_price">{{item.state}}</view>
+            <!-- <view wx:for='{{item.labels}}' wx:for-item="label" wx:key="*this">
+              <view class='tour_label'>{{label}}</view>
+            </view> -->
+            <view class ='tour_label'>{{item.publicOrNot? '公开': item.clubName}}</view>
+            <view class='tour_label'>{{item.limit?'已加入人数: '+item.nums+'/'+item.limit:'已加入人数: '+item.nums}}</view>
+          </view>
+          <view class='weui-media-box__label'>
+            <view class="tour_label">{{'起止时间: '+item.startTime+'~'+item.endTime}}</view>
+          </view>
+          <view class="weui-media-box__desc">{{item.description}}</view>
+        </view>
+      </navigator>
+    </view>
+    <button bindtap='goToCreateTour' type="primary" class="circle" >+</button>
+  </view>
+</view>

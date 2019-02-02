@@ -39,7 +39,7 @@
         <button type="primary" class='upload'>选择图片</button>
       </view>
     </view>
-    
+
 
   </view>
 
@@ -49,4 +49,4 @@
       立即创建
     </button>
   </view>
-</view>
+</view> 
