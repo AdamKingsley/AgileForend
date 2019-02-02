@@ -8,13 +8,13 @@
     "pages/mypage/mypage",
     "pages/personalInfo/personalInfo",
     "pages/mytour/mytour",
-    "pages/mycorporation/mycorporation",
     "pages/historytour/historytour",
     "pages/mycomment/mycomment",
     "pages/club/club",
     "pages/tour/tour",
     "pages/club_detail/club_detail",
-    "pages/createClub/createClub"
+    "pages/createClub/createClub",
+    "pages/myclub/myclub"
   ],
   "window": {
     "backgroundTextStyle": "light",

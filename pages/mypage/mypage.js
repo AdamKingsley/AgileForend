@@ -1,4 +1,4 @@
-//logs.js
+//mypage.js
 var util = require('../../utils/util.js')
 var app = getApp()
 Page({
@@ -21,12 +21,6 @@ Page({
   bindMyTour: function () {
     wx.navigateTo({
       url: '../mytour/mytour'
-    })
-  },
-
-  bindMyCorporation: function () {
-    wx.navigateTo({
-      url: '../mycorporation/corporation'
     })
   },
 
@@ -56,12 +50,17 @@ Page({
   },
   bindHistoryTour: () => {
     wx.navigateTo({
-      url: '../historytour/historytour',
+      url: '../historytour/historytour'
     })
   },
   bindMyComment() {
     wx.navigateTo({
       url: '../mycomment/mycomment'
+    })
+  },
+  bindMyClub() {
+    wx.navigateTo({
+      url: '../myclub/myclub'
     })
   }
 })
