@@ -54,7 +54,7 @@
     <view class="weui-panel__bd" wx:for='{{sights}}' wx:key="id">
       <navigator url="../sight_detail/sight_detail?sightId={{item.id}}&sightName={{item.name}}" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
         <view class="weui-media-box__hd weui-media-box__hd_in-appmsg sight_image">
-          <image class="weui-media-box__thumb" src="{{item.pic}}" />
+          <image class="weui-media-box__thumb" src="{{item.pics[0]}}" />
         </view>
         <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
           <view class="weui-media-box__title">

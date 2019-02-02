@@ -1,2 +1,2 @@
-# schoolQAfront
-校园问答小程序前端
+# AgileForend
+协同出游小程序前端

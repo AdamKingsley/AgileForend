@@ -1,54 +1,27 @@
-/* pages/init_info/init_info.wxss */
-
-/* 整体 */
-
+/* pages/createClub/createClub.wxss */
 page {
   width: 100%;
   height: auto;
 }
 
-.container {
-  margin: 10rpx 40rpx;
+/* .container { */
+  /* margin: 10rpx 40rpx; */
   /* height: inherit; *//* background: inherit; */
-  background: rgba(248, 69, 69, 0.5);
-  border-radius: 10rpx;
-}
+  /* background: rgba(248, 69, 69, 0.5);
+  border-radius: 10rpx; */
+/* } */
 
-.placeholder {
+/* .placeholder {
   color: rgb(247, 222, 222);
-}
+} */
 
-/* 头像 */
 
-.container .avatar image {
-  width: 140rpx;
-  height: 140rpx;
-  padding: 0rpx;
-  margin: 25rpx auto 5rpx auto;
-  align-items: center;
-  border-radius: 50%;
-  /* overflow: hidden; */
-}
-
-/* 姓名 */
-
-.basicinfo .username input {
-  margin: 0 20rpx 20rpx;
-  text-align: center;
-  color: whitesmoke;
-}
-
-.basicinfo .username input.focus {
-  /* text-align: center; */
-  border: 5rpx solid rgb(255, 120, 120);
-  border-radius: 10rpx;
-}
 
 /* 基本信息 */
 
 .basicinfo .weui-vcode-btn {
   background-color: #3cc51f;
-  color: whitesmoke;
+  /* color: whitesmoke; */
 }
 
 .basicinfo .weui-input {
@@ -57,9 +30,9 @@ page {
   margin: 10rpx 0;
 }
 
-.weui-cell.weui-cell_input{
-  padding-right:10rpx; 
-}
+/* .weui-cell.weui-cell_input{
+  /* padding-right:10rpx;  */
+/* } */ 
 
 .weui-vcode-btn {
   border-radius: 20rpx;
@@ -69,7 +42,7 @@ page {
 
 .weui-cell__bd, .weui-cell__hd {
   font-size: 35rpx;
-  color: whitesmoke;
+  /* color: whitesmoke; */
   text-align: center;
 }
 /* .weui-cell__bd input.weui-input{
@@ -78,10 +51,7 @@ page {
 .weui-cell__hd .weui-label{
   width: 150rpx;
 }
-.weui-cell__bd{
-    height: 113rpx;
-    vertical-align: center;
-}
+
 .weui-cell__bd radio-group{
   margin: 28rpx 0 0 0;
 
@@ -142,4 +112,41 @@ page {
   padding: 0;
   background-color: rgb(255, 120, 120);
   color: white;
+}
+
+
+.button-hover {
+  background-color: rgba(0, 0, 255, 0.158);
+}
+
+.myInput{
+  display: flex;
+  position:relative;
+  padding: 10px 15px;
+  height:100px;
+  width:305px;
+  -webkit-box-align: top;
+  -webkit-align-items: top;
+          align-items: top;
+}
+.myInput:before {
+  content: " ";
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  height: 1px;
+  border-top: 1rpx solid #D9D9D9;
+  color: #D9D9D9;
+  left: 15px;
+}
+
+.des-input{
+  border: 5rpx solid rgb(255, 200, 200);
+  margin: 10rpx 0;
+  height:80px;
+}
+
+.upload{
+  margin: 5px;
 }

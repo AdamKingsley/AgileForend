@@ -1,4 +1,4 @@
-// pages/tour_detail/tourDetail.js
+// pages/tour_detail/tour_detail.js
 Page({
 
   /**

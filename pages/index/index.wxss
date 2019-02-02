@@ -132,6 +132,7 @@ page {
 .weui-media-box__label {
   vertical-align: center;
   display: flex;
+  align-items: center;
   /* height: 50rpx; */
 }
 

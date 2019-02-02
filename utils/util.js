@@ -41,6 +41,27 @@ function postData(url, data) {
   })
 }
 
+function showToast(title, icon, duration = 2000) {
+  let data = {
+    title: title,
+    icon: icon,
+    duration: 2000
+  };
+  if (icon == "fail") {
+    data.image = '../../images/fail.png'
+  }
+  wx.showToast(data);
+}
+
+function checkPhone(phone) {
+  // var phone = document.getElementById('phone').value;
+  if (!(/^1[34578]\d{9}$/.test(phone))) {
+    // alert("手机号码有误，请重填");
+    return false;
+  }
+  return true;
+}
+
 //获取当前登录用户的ownerid
 const getOwnerId = () => {
   return new Promise(function(resolve, reject) {
@@ -69,6 +90,9 @@ const getOpenId = () => {
     })
   })
 }
+
 module.exports.getData = getData;
 module.exports.postData = postData;
-module.exports.getOwnerId = getOwnerId
+module.exports.getOwnerId = getOwnerId;
+module.exports.showToast = showToast;
+module.exports.checkPhone = checkPhone;

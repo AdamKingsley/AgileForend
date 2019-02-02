@@ -1,0 +1,25 @@
+<!--pages/club_detail/club_detail.wxml-->
+
+<view class="weui-panel__bd" wx:for='{{clubs}}' wx:key="id">
+    <view class="weui-media-box__hd weui-media-box__hd_in-appmsg sight_image">
+      <image class="weui-media-box__thumb" src="{{item.pic}}" />
+    </view>
+</view>
+
+<view>
+  <text>已有5人报名 报名限制100人</text>    
+</view>
+<view>
+  <text>社团名称：南大社团</text>    
+</view>
+<view>
+  <text>社团介绍：南京大学</text>    
+</view>
+<view>
+  <text>团长：追梦赤子</text>    
+</view>
+<view class="confirmBtn">
+    <button type="primary" bindtap="confirm">
+      立即报名
+    </button>
+  </view>
