@@ -159,5 +159,12 @@ Page({
     this.setData({
       select_text: e.detail.value
     });
+  },
+
+  goToCreateTour: function (parm) {
+    console.log('a');
+    wx.navigateTo({
+      url: '/pages/create_tour/create_tour',
+    })
   }
 })

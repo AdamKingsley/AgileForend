@@ -84,5 +84,6 @@
         </view>
       </navigator>
     </view>
+    <button bindtap='goToCreateTour' type="primary" class="circle" >+</button>
   </view>
 </view>
