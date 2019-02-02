@@ -1,66 +1,80 @@
 // pages/sight_detail/sight_detail.js
+let app = getApp();
+let util = require('../../utils/util.js');
+let import_data = require('./data.js');
+
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-
+    //轮播图配置相关信息
+    swiper_config: import_data.swiper_config,
+    swiper_images: [],
+    //景点详情
+    sight: {},
+    ellipsis: true,
+    score_color: 'red',
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-
+  onLoad: function(options) {
+    //在标题栏中显示加载
+    wx.showNavigationBarLoading();
+    console.log("options:", options);
+    let sightId = options.sightId;
+    //获取详情
+    util.getData('sight/detail/' + sightId).then(res => {
+      console.log("详情信息：", res);
+      if (res.data.code == 200) {
+        //轮播图数据准备
+        wx.setNavigationBarTitle({
+          title: res.data.data.name
+        });
+        let pics = res.data.data.pics;
+        console.log(pics);
+        let swiper_images = [];
+        pics.forEach((item, index) => {
+          swiper_images.push(item);
+        });
+        this.setData({
+          sight: res.data.data,
+          swiper_images: swiper_images
+        });
+        this.scoreColor(res.data.data.score);
+      } else {
+        util.showToast("获取数据失败！", "fail", 2000);
+      }
+      //加载了标题name后就立马取消loading
+      wx.hideNavigationBarLoading();
+    }).catch(e => {
+      util.showToast("系统内部异常！", "fail", 2000);
+      //加载了标题name后就立马取消loading
+      wx.hideNavigationBarLoading();
+    });
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
+  onReady: function() {
+    console.log("onReady:", this.data);
   },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
+  onShow: function() {},
+  //是否默认显示
+  ellipsis: function() {
+    var value = !this.data.ellipsis;
+    this.setData({
+      ellipsis: value
+    });
   },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
+  scoreColor: function(score) {
+    let score_color = 'yellow';
+    if (score >= 4.5) {
+      score_color = 'red';
+    } else if (score <= 3.5) {
+      score_color = "green";
+    }
+    this.setData({
+      score_color
+    });
   },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+  createTour: function() {
+    //跳转到创建出游页面
+    wx.navigateTo({
+      url: '../mytour/mytour?sightId=' + this.data.sight.id + '&sightName=' + this.data.sight.name,
+    });
   }
 })

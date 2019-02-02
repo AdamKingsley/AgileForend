@@ -9,7 +9,7 @@ Page({
     provinceId: '320000',
     city: '南京市',
     cityId: '320100',
-    sights: []
+    sights: null
   },
   /**
    * 生命周期函数--监听页面加载
@@ -17,13 +17,23 @@ Page({
   onLoad: function(options) {
     console.log('index onload');
     console.log(app.globalData)
+    // this.init_data();
+    // this.init_sights();
+  },
+  onShow: function(options) {
+    wx.showNavigationBarLoading();
+    console.log('index onShow');
+    console.log(app.globalData)
+    this.init_data();
+    this.init_sights();
+  },
+  init_data: function(){
     this.setData({
       city: app.globalData.city ? app.globalData.city.itemName : this.data.city,
       cityId: app.globalData.city ? app.globalData.city.id : this.data.cityId,
       province: app.globalData.province ? app.globalData.province.itemName : this.data.province,
       provinceId: app.globalData.province ? app.globalData.province.id : this.data.provinceId,
     });
-    this.init_sights();
   },
   init_sights: function() {
     let that = this;
@@ -37,13 +47,11 @@ Page({
       } else {
         util.showToast("获取数据出错！", "fail", 200);
       }
+      wx.hideNavigationBarLoading();
     }).catch(e => {
       util.showToast("获取数据出错！", "fail", 200);
+      wx.hideNavigationBarLoading();
     });
-  },
-
-  onShow: function(options) {
-    //this.onLoad(options);
   },
   selectCity: function() {
     wx.navigateTo({

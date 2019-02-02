@@ -8,7 +8,6 @@
     "pages/mypage/mypage",
     "pages/personalInfo/personalInfo",
     "pages/mytour/mytour",
-    "pages/mycorporation/mycorporation",
     "pages/historytour/historytour",
     "pages/mycomment/mycomment",
     "pages/club/club",
@@ -16,7 +15,8 @@
     "pages/createClub/createClub",
     "pages/tour/tour",
     "pages/tour_detail/tour_detail",
-    "pages/create_tour/create_tour"
+    "pages/create_tour/create_tour",
+    "pages/myclub/myclub"
   ],
   "window": {
     "backgroundTextStyle": "light",

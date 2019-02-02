@@ -24,10 +24,10 @@
   <view class="weui-cells searchbar-result" wx:if="{{select_text.length > 0}}">
     <navigator url="" class="weui-cell" hover-class="weui-cell_active">
       <view class="weui-cell__bd">
-        <view>实时搜索文本</view>
+        <view>总统府</view>
       </view>
     </navigator>
-    <navigator url="" class="weui-cell" hover-class="weui-cell_active">
+    <!-- <navigator url="" class="weui-cell" hover-class="weui-cell_active">
       <view class="weui-cell__bd">
         <view>实时搜索文本</view>
       </view>
@@ -41,9 +41,8 @@
       <view class="weui-cell__bd">
         <view>实时搜索文本</view>
       </view>
-    </navigator>
+    </navigator> -->
   </view>
-
   <view class="filter-view">筛选部分组件:未实现</view>
 </view>
 
@@ -51,33 +50,40 @@
 
 <view class="page__bd index-bottom">
   <view class="weui-panel weui-panel_access">
-    <view class="weui-panel__bd" wx:for='{{sights}}' wx:key="id">
-      <navigator url="../sight_detail/sight_detail?sightId={{item.id}}&sightName={{item.name}}" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
-        <view class="weui-media-box__hd weui-media-box__hd_in-appmsg sight_image">
-          <image class="weui-media-box__thumb" src="{{item.pics[0]}}" />
-        </view>
-        <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
-          <view class="weui-media-box__title">
-            <text>{{item.name}}</text>
-            <view wx:if="{{item.score>=4.5}}">
-              <view class="score_red">{{item.score}}</view>
-            </view>
-            <view wx:elif="{{item.score<=3.0}}">
-              <view class="score_green">{{item.score}}</view>
-            </view>
-            <view wx:else>
-              <view class="score_yellow">{{item.score}}</view>
-            </view>
+    <block wx:if="{{!sights}}">
+    </block>
+    <block wx:elif="{{sights.length > 0}}">
+      <view class="weui-panel__bd" wx:for='{{sights}}' wx:key="id">
+        <navigator url="../sight_detail/sight_detail?sightId={{item.id}}&sightName={{item.name}}" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
+          <view class="weui-media-box__hd weui-media-box__hd_in-appmsg sight_image">
+            <image class="weui-media-box__thumb" src="{{item.pics[0]}}" />
           </view>
-          <view class='weui-media-box__label'>
-            <view class="sight_price">{{item.price?'门票'+item.price+'￥':'无门票'}}</view>
-            <view wx:for='{{item.labels}}' wx:for-item="label" wx:key="*this">
-              <view class='sight_label'>{{label}}</view>
+          <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+            <view class="weui-media-box__title">
+              <text>{{item.name}}</text>
+              <view wx:if="{{item.score>=4.5}}">
+                <view class="score_red">{{item.score}}</view>
+              </view>
+              <view wx:elif="{{item.score<=3.0}}">
+                <view class="score_green">{{item.score}}</view>
+              </view>
+              <view wx:else>
+                <view class="score_yellow">{{item.score}}</view>
+              </view>
             </view>
+            <view class='weui-media-box__label'>
+              <view class="sight_price">{{item.price?'门票'+item.price+'￥':'无门票'}}</view>
+              <view wx:for='{{item.labels}}' wx:for-item="label" wx:key="*this">
+                <view class='sight_label'>{{label}}</view>
+              </view>
+            </view>
+            <view class="weui-media-box__desc">{{item.description}}</view>
           </view>
-          <view class="weui-media-box__desc">{{item.description}}</view>
-        </view>
-      </navigator>
-    </view>
+        </navigator>
+      </view>
+    </block>
+    <block wx:else>
+      <view class="empty">暂无景区信息</view>
+    </block>
   </view>
 </view>
