@@ -5,8 +5,8 @@ var import_data = require("./data.js")
 Page({
   data: import_data.data,
   //初始化数据
-  init_data: function (clubinfo) {
-    console.log(clubinfo);
+  init_data: function (clubInfo) {
+    console.log(clubInfo);
     let clubinfo = this.data.clubinfo;
     clubinfo.ownerid = wx.getStorageSync('userid');
   },
@@ -20,15 +20,15 @@ Page({
     if (app.globalData.clubinfo) {
       that.init_data(app.globalData.clubinfo);
     } else {
-      wx.getClubInfo({
-        success: res => {
-          // console.log(res);
-          that.init_data(res.clubInfo);
-        },
-        fail: res => {
-          util.showToast("创建社团失败！", "fail", 2000);
-        }
-      });
+      // wx.getClubInfo({
+      //   success: res => {
+      //     // console.log(res);
+      //     that.init_data(res.clubInfo);
+      //   },
+      //   fail: res => {
+      //     util.showToast("创建社团失败！", "fail", 2000);
+      //   }
+      // });
     }
   },
 
