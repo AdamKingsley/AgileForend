@@ -1,4 +1,4 @@
-//mytour 我的出游
+//index.js 主页
 var util = require('../../utils/util.js')
 var app = getApp()
 Page({
@@ -6,71 +6,120 @@ Page({
     inputShowed: false,
     select_text: "",
     province: '江苏省',
-    provinceId: '320000',
-    city: '南京市',
-    cityId: '320100',
-    sights: [{
+    provinceId: 2,
+    city: '南京',
+    cityId: 1,
+    tours: [{
       id: 1,
-      pic: 'http://localhost:9999/pics/sight/sight_template.jpg',
-      name: "总统府",
-      description: "这里美如画，这里贼好玩，这里的山路十八弯，这里的水路九连环",
+      pic: '../../images/sight_template.jpg',
+      name: "总统府一日游",
+      description: "这里真好玩",
       score: 4.7,
-      price: 20,
-      labels: ['4A景区', '名楼', '俯瞰长江']
+      state: "未开始",
+      nums: 5,
+      limit: 100,
+      startTime: "2019-01-22:19:00",
+      endTime: "2019-01-22:22:00",
+      joinOrNot: false,
+      publicOrNot: true,
     }, {
       id: 2,
-      name: '夫子庙',
       pic: '../../images/sight_template.jpg',
-      description: "这里美如画，这里贼好玩，这里的山路十八弯，这里的水路九连环",
-      score: 3.2,
-      price: 20,
+      name: "总统府一日游",
+      description: "这里真好玩",
+      score: 3.0,
+      state: "未开始",
+      nums: 5,
+      limit: 100,
+      startTime: "2019-01-22:19:00",
+      endTime: "2019-01-22:22:00",
+      joinOrNot: false,
+      publicOrNot: true,
     }, {
       id: 3,
-      name: '老门东',
       pic: '../../images/sight_template.jpg',
-      description: "这里美如画，这里贼好玩，这里的山路十八弯，这里的水路九连环",
+      name: "总统府一日游",
+      description: "这里真好玩",
       score: 5.0,
-      price: 20,
+      state: "进行中",
+      nums: 5,
+      limit: 100,
+      startTime: "2019-01-12:19:00",
+      endTime: "2019-01-22:22:00",
+      joinOrNot: false,
+      publicOrNot: true,
     }, {
       id: 4,
-      name: "狮子桥",
       pic: '../../images/sight_template.jpg',
-      description: "这里美如画，这里贼好玩，这里的山路十八弯，这里的水路九连环",
+      name: "总统府一日游",
+      description: "这里真好玩",
       score: 4.7,
-      price: 0,
+      state: "进行中",
+      nums: 5,
+      limit: 100,
+      startTime: "2019-01-22:19:00",
+      endTime: "2019-01-22:22:00",
+      joinOrNot: false,
+      publicOrNot: true,
     }, {
       id: 5,
-      name: "中山陵",
       pic: '../../images/sight_template.jpg',
-      description: "这里美如画，这里贼好玩，这里的山路十八弯，这里的水路九连环",
-      score: 1.7,
+      name: "总统府一日游",
+      description: "这里真好玩",
+      score: 4.7,
+      state: "进行中",
+      nums: 5,
+      limit: 100,
+      startTime: "2019-01-22:19:00",
+      endTime: "2019-01-22:22:00",
+      joinOrNot: false,
+      publicOrNot: true,
     }, {
       id: 6,
       name: "雨花台",
       pic: '../../images/sight_template.jpg',
-      description: "这里美如画，这里贼好玩，这里的山路十八弯，这里的水路九连环",
-      score: 3.7,
+      name: "总统府一日游",
+      description: "这里真好玩",
+      score: 4.7,
+      state: "进行中",
+      nums: 5,
+      limit: 100,
+      startTime: "2019-01-22:19:00",
+      endTime: "2019-01-22:22:00",
+      joinOrNot: false,
+      publicOrNot: true,
     }, {
       id: 7,
       pic: '../../images/sight_template.jpg',
-      name: "燕子矶",
-      description: "这里美如画，这里贼好玩，这里的山路十八弯，这里的水路九连环",
-      score: 5.0,
-      price: 150,
+      name: "总统府一日游",
+      description: "这里真好玩",
+      score: 4.7,
+      state: "已结束",
+      nums: 5,
+      startTime: "2019-01-22:19:00",
+      endTime: "2019-01-22:22:00",
+      joinOrNot: false,
+      publicOrNot: true,
     }, {
       id: 8,
-      name: "阅江楼",
       pic: '../../images/sight_template.jpg',
-      description: "这里美如画，这里贼好玩，这里的山路十八弯，这里的水路九连环",
-      score: 5.0,
-      price: 100,
+      name: "总统府一日游",
+      description: "这里真好玩",
+      score: 4.7,
+      state: "已结束",
+      nums: 19,
+      startTime: "2019-01-22:19:00",
+      endTime: "2019-01-22:22:00",
+      joinOrNot: false,
+      clubId: 11000,
+      clubName: "社团A",
     }]
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log('mytour onload');
+    console.log('index onload');
     console.log(app.globalData)
     this.setData({
       city: app.globalData.city ? app.globalData.city.itemName : this.data.city,
@@ -82,14 +131,14 @@ Page({
   onShow: function (options) {
     this.onLoad(options);
   },
-  // selectCity: function () {
-  //   wx.navigateTo({
-  //     url: '../city_selector/city_selector?cityId=' + this.data.cityId + '&city=' + this.data.city + '&province=' + this.data.province + '&provinceId=' + this.data.provinceId,
-  //     success: function (res) { },
-  //     fail: function (res) { },
-  //     complete: function (res) { },
-  //   })
-  // },
+  selectCity: function () {
+    wx.navigateTo({
+      url: '../city_selector/city_selector?cityId=' + this.data.cityId + '&city=' + this.data.city + '&province=' + this.data.province + '&provinceId=' + this.data.provinceId,
+      success: function (res) { },
+      fail: function (res) { },
+      complete: function (res) { },
+    })
+  },
   showInput: function () {
     this.setData({
       inputShowed: true

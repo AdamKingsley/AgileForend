@@ -24,6 +24,41 @@ page {
   padding: 12px 15px 12px 35px;
 }
 
+.location {
+  display: inherit;
+  background: #efeff4;
+}
+
+.location image {
+  float: left;
+  padding: 10px 0px 10px 5px;
+  height: 47px;
+  width: 30px;
+  box-sizing: border-box;
+  background-color: #efeff4;
+  border-top: 1rpx solid #d7d6dc;
+  border-bottom: 1rpx solid #d7d6dc;
+}
+
+.location text {
+  padding: 9px 0;
+  float: left;
+  /* border-radius: 3px; */
+  text-align: center;
+  color: #515151;
+  line-height: 28px;
+  font-size: 14px;
+  font-weight: bold;
+  background-color: #efeff4;
+  /* border-top: 1rpx solid #d7d6dc; */
+  border-bottom: 1rpx solid #d7d6dc;
+}
+
+.filter-view {
+  text-align: center;
+  background: #efeff4;
+  border-bottom: 1rpx solid #d7d6dc;
+}
 
 .index-top {
   position: fixed;
@@ -37,7 +72,7 @@ page {
 
 .index-bottom {
   position: absolute;
-  margin-top: 100rpx;
+  margin-top: 173rpx;
   z-index: 10;
   width: 100%;
 }
@@ -62,9 +97,9 @@ page {
 
 .weui-media-box__title view {
   vertical-align: center;
-  margin-left: 5rpx;
+  margin-left: 10rpx;
   display: inline-block;
-  font-size: 22rpx;
+  font-size: 30rpx;
   align-items: center;
   line-height: 30rpx;
   width: 50rpx;
@@ -75,12 +110,17 @@ page {
   color: white;
 }
 
-.time_red {
+.score_red {
   background: #ff4f47;
   border: 3rpx solid #ff4f47;
 }
 
-.time_green {
+.score_yellow {
+  background: #ffc800;
+  border: 3rpx solid #ffc800;
+}
+
+.score_green {
   background: #00c06a;
   border: 3rpx solid #00c06a;
 }
@@ -92,7 +132,6 @@ page {
 .weui-media-box__label {
   vertical-align: center;
   display: flex;
-  align-items: center;
   /* height: 50rpx; */
 }
 
@@ -103,17 +142,31 @@ page {
   margin: 2rpx 10rpx 5rpx 0;
 }
 
-.weui-media-box__label .tour_data{
+.weui-media-box__label .tour_price{
   color: #99e2ff;
   border: 2rpx solid #99e2ff;
   padding: 0 5rpx;
   border-radius: 5rpx;
 }
-/* .weui-media-box__label .sight_label{
+.weui-media-box__label .tour_label{
   color: #999999;
   background: #F9F9F9;
   border: 2rpx solid #F9F9F9;
   padding: 0 5rpx;
   border-radius: 5rpx;
-} */
+}
+
+.circle{
+    float: right;
+    position: fixed;
+    bottom: 20px;
+    right: 10px;
+    width: 40px;
+    height: 40px;
+    font-size: 17px;
+    background-color: #ffffff;
+    border: 0 solid #ffffff;
+    border-radius: 20px;
+    box-shadow: 4px 1px 1px #cccccc;
+}
 

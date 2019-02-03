@@ -7,7 +7,7 @@ Page({
     select_text: "",
     province: '江苏省',
     provinceId: '320000',
-    city: '南京市',
+    city: '南京',
     cityId: '320100',
     sights: null
   },
