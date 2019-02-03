@@ -7,7 +7,22 @@ Page({
    * 页面的初始数据
    */
   data: {
-    userInfo: {},
+    userinfo: {
+      openid: '0',
+      sex: '1',
+      nickname: '巫浩然',
+      avatar: '',
+      tel: '13888888888',
+      province: '江苏省',
+      city: '南京市',
+      area: '鼓楼区',
+      province_id: '',
+      city_id: '',
+      area_id: '',
+      address: '', 
+      individual: '好嗨哦!',
+      school: '南京大学'
+    },
     curWord: 0,
     maxWord: 50,
     ownerId: 0,
