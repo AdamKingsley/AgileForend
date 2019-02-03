@@ -1,71 +1,155 @@
-// pages/myquestionlist/questionList.js
-const pageName = 'questionList'
+//index.js 主页
 var util = require('../../utils/util.js')
-const app = getApp()
+var app = getApp()
 Page({
   data: {
-    page: 1,
-    pageSize: 1000,
-    myQuestions: [],
-    loading: false,
+    inputShowed: false,
+    select_text: "",
+    province: '江苏省',
+    provinceId: 2,
+    city: '南京',
+    cityId: 1,
+    tours: [{
+      id: 1,
+      pic: '../../images/sight_template.jpg',
+      name: "总统府一日游",
+      description: "这里真好玩",
+      score: 4.7,
+      state: "未开始",
+      nums: 5,
+      limit: 100,
+      startTime: "2019-01-22:19:00",
+      endTime: "2019-01-22:22:00",
+      joinOrNot: true,
+      publicOrNot: true,
+    }, {
+      id: 2,
+      pic: '../../images/sight_template.jpg',
+      name: "总统府一日游",
+      description: "这里一般般",
+      score: 3.0,
+      state: "已结束",
+      nums: 5,
+      limit: 100,
+      startTime: "2019-01-22:19:00",
+      endTime: "2019-01-22:22:00",
+      joinOrNot: true,
+      publicOrNot: true,
+    }, {
+      id: 3,
+      pic: '../../images/sight_template.jpg',
+      name: "总统府一日游",
+      description: "这里不好玩",
+      score: 5.0,
+      state: "进行中",
+      nums: 5,
+      limit: 100,
+      startTime: "2019-01-12:19:00",
+      endTime: "2019-01-22:22:00",
+      joinOrNot: false,
+      publicOrNot: true,
+    }, {
+      id: 4,
+      pic: '../../images/sight_template.jpg',
+      name: "总统府一日游",
+      description: "这里真好玩",
+      score: 4.7,
+      state: "进行中",
+      nums: 5,
+      limit: 100,
+      startTime: "2019-01-22:19:00",
+      endTime: "2019-01-22:22:00",
+      joinOrNot: true,
+      publicOrNot: true,
+    }, {
+      id: 5,
+      pic: '../../images/sight_template.jpg',
+      name: "总统府一日游",
+      description: "这里真好玩",
+      score: 4.7,
+      state: "进行中",
+      nums: 5,
+      limit: 100,
+      startTime: "2019-01-22:19:00",
+      endTime: "2019-01-22:22:00",
+      joinOrNot: false,
+      publicOrNot: true,
+    }, {
+      id: 6,
+      name: "雨花台",
+      pic: '../../images/sight_template.jpg',
+      name: "总统府一日游",
+      description: "这里还可以",
+      score: 4.5,
+      state: "已结束",
+      nums: 5,
+      limit: 100,
+      startTime: "2019-01-22:19:00",
+      endTime: "2019-01-22:22:00",
+      joinOrNot: true,
+      publicOrNot: true,
+    }, {
+      id: 7,
+      pic: '../../images/sight_template.jpg',
+      name: "总统府一日游",
+      description: "这里真好玩",
+      score: 4.7,
+      state: "已结束",
+      nums: 5,
+      startTime: "2019-01-22:19:00",
+      endTime: "2019-01-22:22:00",
+      joinOrNot: false,
+      publicOrNot: true,
+    }, {
+      id: 8,
+      pic: '../../images/sight_template.jpg',
+      name: "总统府一日游",
+      description: "这里真好玩",
+      score: 4.7,
+      state: "已结束",
+      nums: 19,
+      startTime: "2019-01-22:19:00",
+      endTime: "2019-01-22:22:00",
+      joinOrNot: true,
+      clubId: 11000,
+      clubName: "社团A",
+    }]
   },
+  /**
+   * 生命周期函数--监听页面加载
+   */
   onLoad: function (options) {
-    this.loadMyQuestions()
+    console.log('index onload');
+    console.log(app.globalData)
+    this.setData({
+      city: app.globalData.city ? app.globalData.city.itemName : this.data.city,
+      cityId: app.globalData.city ? app.globalData.city.id : this.data.cityId,
+      province: app.globalData.province ? app.globalData.province.itemName : this.data.province,
+      provinceId: app.globalData.province ? app.globalData.province.id : this.data.provinceId,
+    });
   },
-  onQuestionTap(e) {
-    let qid = e.currentTarget.dataset.qid;
-    wx.navigateTo({
-      url: '../question/question?id=' + qid
-    })
+  onShow: function (options) {
+    this.onLoad(options);
   },
-  onPullDownRefresh: function () {
-    if (!this.data.loading) {
-      this.setData({ page: 1 })
-      this.loadMyQuestions(null, wx.hideLoading)
-      wx.showLoading({
-        title: '正在刷新...',
-        mask: true,
-      })
-    }
+  showInput: function () {
+    this.setData({
+      inputShowed: true
+    });
   },
-  onReachBottom: function () {
-    if (!this.data.loading) {
-      this.setData({ page: this.data.page + 1 })
-      this.loadMyQuestions(this.data.page)
-    }
+  hideInput: function () {
+    this.setData({
+      select_text: "",
+      inputShowed: false
+    });
   },
-  loadMyQuestions: function (page) {
-    page = page || this.data.page
-    util.getOwnerId().then(ownerid => {
-      this.setData({ loading: true })
-      let url = `user/${ownerid}/${pageName}/${this.data.page}/${this.data.pageSize}`
-      util.getData(url).then(({ data }) => {
-        this.setData({ loading: false })
-        wx.stopPullDownRefresh()
-
-        // 挂载数据
-        if (1 >= page) {
-          this.setData({ myQuestions: data.data.content })
-        } else {
-          if (!data.data.empty) {
-            let questions = this.data.myQuestions
-            data.data.content.map(question => {
-              questions.push(question)
-            })
-            this.setData({ myQuestions: questions })
-          } else {
-            this.setData({ page: this.data.page - 1 })
-          }
-        }
-      }).catch((err) => {
-        this.setData({ loading: false })
-        wx.stopPullDownRefresh()
-        if (unShowLoading) {
-          unShowLoading()
-        }
-      })
-    })
-      .catch(err => {
-      })
+  clearInput: function () {
+    this.setData({
+      select_text: ""
+    });
+  },
+  inputTyping: function (e) {
+    this.setData({
+      select_text: e.detail.value
+    });
   }
 })

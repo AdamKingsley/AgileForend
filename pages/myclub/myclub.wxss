@@ -23,11 +23,11 @@ page {
   padding: 12px 15px 12px 35px;
 }
 
-.filter-view {
+/* .filter-view {
   text-align: center;
   background: #efeff4;
   border-bottom: 1rpx solid #d7d6dc;
-}
+} */
 
 .index-top {
   position: fixed;
@@ -41,7 +41,7 @@ page {
 
 .index-bottom {
   position: absolute;
-  margin-top: 173rpx;
+  margin-top: 110rpx;
   z-index: 10;
   width: 100%;
 }

@@ -20,7 +20,7 @@ Page({
       limit: 100,
       // startTime: "2019-01-22:19:00",
       // endTime: "2019-01-22:22:00",
-      joinOrNot: false,
+      joinOrNot: true,
       publicOrNot: true,
     }, {
       id: 2,
@@ -33,7 +33,7 @@ Page({
       limit: 100,
       // startTime: "2019-01-22:19:00",
       // endTime: "2019-01-22:22:00",
-      joinOrNot: false,
+      joinOrNot: true,
       publicOrNot: true,
     }, {
       id: 3,
@@ -72,7 +72,7 @@ Page({
       limit: 100,
       // startTime: "2019-01-22:19:00",
       // endTime: "2019-01-22:22:00",
-      joinOrNot: false,
+      joinOrNot: true,
       publicOrNot: true,
     }, {
       id: 6,
@@ -111,7 +111,7 @@ Page({
       limit: 100,
       // startTime: "2019-01-22:19:00",
       // endTime: "2019-01-22:22:00",
-      joinOrNot: false,
+      joinOrNot: true,
       clubId: 11000,
       clubName: "社团A",
     }]

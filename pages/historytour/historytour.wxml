@@ -1,15 +1,11 @@
 <!--tour.wxml-->
 <!-- 搜索框 -->
 <view class="page__bd index-top">
-  <view class='location' bindtap='selectCity'>
-    <image src="../../images/location.png"></image>
-    <text>{{city}}</text>
-  </view>
   <view class="weui-search-bar">
     <view class="weui-search-bar__form">
       <view class="weui-search-bar__box">
         <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
-        <input type="text" class="weui-search-bar__input" placeholder="搜索景点" value="{{select_text}}" focus="{{inputShowed}}" bindinput="inputTyping" />
+        <input type="text" class="weui-search-bar__input" placeholder="搜索出游" value="{{select_text}}" focus="{{inputShowed}}" bindinput="inputTyping" />
         <view class="weui-icon-clear" wx:if="{{select_text.length > 0}}" bindtap="clearInput">
           <icon type="clear" size="14"></icon>
         </view>
@@ -44,14 +40,14 @@
     </navigator>
   </view>
 
-  <view class="filter-view">筛选部分组件:未实现</view>
+  <!-- <view class="filter-view">筛选部分组件:未实现</view> -->
 </view>
 
 <!-- 出游列表 -->
 
 <view class="page__bd index-bottom">
   <view class="weui-panel weui-panel_access">
-    <view class="weui-panel__bd" wx:for='{{tours}}' wx:key="id">
+    <view class="weui-panel__bd" wx:for='{{tours}}' wx:if="{{item.state=='已结束'}}" wx:key="id">
       <navigator url="../tour_detail/tour_detail?tourId={{item.id}}&tourName={{item.name}}" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
         <view class="weui-media-box__hd weui-media-box__hd_in-appmsg sight_image">
           <image class="weui-media-box__thumb" src="{{item.pic}}" />
@@ -70,7 +66,7 @@
             </view>
           </view>
           <view class='weui-media-box__label'>
-            <view class="tour_price">{{item.state}}</view>
+            <view class="tour_state">{{item.state}}</view>
             <!-- <view wx:for='{{item.labels}}' wx:for-item="label" wx:key="*this">
               <view class='tour_label'>{{label}}</view>
             </view> -->

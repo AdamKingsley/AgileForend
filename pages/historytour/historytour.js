@@ -15,12 +15,12 @@ Page({
       name: "总统府一日游",
       description: "这里真好玩",
       score: 4.7,
-      state: "已结束",
+      state: "未开始",
       nums: 5,
       limit: 100,
       startTime: "2019-01-22:19:00",
       endTime: "2019-01-22:22:00",
-      joinOrNot: false,
+      joinOrNot: true,
       publicOrNot: true,
     }, {
       id: 2,
@@ -33,7 +33,7 @@ Page({
       limit: 100,
       startTime: "2019-01-22:19:00",
       endTime: "2019-01-22:22:00",
-      joinOrNot: false,
+      joinOrNot: true,
       publicOrNot: true,
     }, {
       id: 3,
@@ -59,7 +59,7 @@ Page({
       limit: 100,
       startTime: "2019-01-22:19:00",
       endTime: "2019-01-22:22:00",
-      joinOrNot: false,
+      joinOrNot: true,
       publicOrNot: true,
     }, {
       id: 5,
@@ -80,13 +80,13 @@ Page({
       pic: '../../images/sight_template.jpg',
       name: "总统府一日游",
       description: "这里真好玩",
-      score: 4.7,
-      state: "进行中",
+      score: 4.5,
+      state: "已结束",
       nums: 5,
       limit: 100,
       startTime: "2019-01-22:19:00",
       endTime: "2019-01-22:22:00",
-      joinOrNot: false,
+      joinOrNot: true,
       publicOrNot: true,
     }, {
       id: 7,
@@ -110,7 +110,7 @@ Page({
       nums: 19,
       startTime: "2019-01-22:19:00",
       endTime: "2019-01-22:22:00",
-      joinOrNot: false,
+      joinOrNot: true,
       clubId: 11000,
       clubName: "社团A",
     }]
@@ -130,14 +130,6 @@ Page({
   },
   onShow: function (options) {
     this.onLoad(options);
-  },
-  selectCity: function () {
-    wx.navigateTo({
-      url: '../city_selector/city_selector?cityId=' + this.data.cityId + '&city=' + this.data.city + '&province=' + this.data.province + '&provinceId=' + this.data.provinceId,
-      success: function (res) { },
-      fail: function (res) { },
-      complete: function (res) { },
-    })
   },
   showInput: function () {
     this.setData({
