@@ -1,2 +1,75 @@
-<!--pages/tour_detail/tour_detail.wxml-->
-<text>pages/tour_detail/tour_detail.wxml</text>
+<view class='content'>
+  <!-- start swiper -->
+  <view class='swiper'>
+    <swiper indicator-dots="{{swiper_config.indicatorDots}}" autoplay="{{swiper_config.autoplay}}" interval="{{swiper_config.interval}}" duration="{{swiper_config.duration}}">
+      <block wx:for="{{swiper_images}}">
+        <swiper-item>
+          <image src="{{item}}" class="slide-image" />
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+  <!-- end swiper -->
+
+  <!-- start detail -->
+  <view class='detail'>
+    <!-- start title block -->
+    <view class='block title'>
+      <view>
+        <view class='name'>
+          <text>{{sight.name}}</text>
+        </view>
+      </view>
+
+      <view class='labels'>
+        <view class='weui-media-box__label'>
+          <view class="sight_price">{{sight.price?'门票'+sight.price+'￥':'无门票'}}</view>
+          <view wx:if="{{sight.labels.length==1 && sight.labels[0]==''}}"></view>
+          <view wx:else>
+            <view wx:for='{{sight.labels}}' wx:for-item="label" wx:key="*this">
+              <view class='sight_label'>{{label}}</view>
+            </view>
+          </view>
+          <view class='score_title score_title_{{score_color}}'>评分</view>
+          <view class="sight_score sight_score_{{score_color}}">{{sight.score}}</view>
+        </view>
+      </view>
+    </view>
+    <!-- end title block -->
+    <!-- start description block -->
+    <view class='block'>
+      <view class='description title' bindtap='ellipsis'>
+        <text class='description_title'>简介</text>
+        <image class='img-ellipsis' src="{{ellipsis?'../../images/ellipsis.png':'../../images/unellipsis.png'}}"></image>
+      </view>
+      <view class='discription content'>
+        <text class="description_content {{ellipsis?'ellipsis':'unellipsis'}}">{{sight.description}}</text>
+      </view>
+      <view class='ellipsis'>
+      </view>
+    </view>
+    <!-- end description block -->
+
+    <!-- start address block -->
+    <view class='block'>
+      <view class='address_title'>地址</view>
+      <view class='address_content'>{{sight.province+sight.city+sight.area+sight.address}}</view>
+    </view>
+    <!-- end address block -->
+
+
+    <!-- start more block -->
+    <view class='block'>
+      <view class='more_title'>更多信息</view>
+      <view class='more_content'>敬请期待，我们将持续为您更新收集更加丰富的景区详情信息！</view>
+    </view>
+    <!-- end more block -->
+  </view>
+
+
+
+  <!-- add icon -->
+  <view class='add_tour' bindtap='createTour'>
+    <image class='add_tour_img' src='../../images/add.png'></image>
+  </view>
+</view>

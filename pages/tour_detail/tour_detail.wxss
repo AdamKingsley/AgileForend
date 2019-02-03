@@ -1,1 +1,205 @@
-/* pages/tour_detail/tour_detail.wxss */
+/* pages/sight_detail/sight_detail.wxss */
+
+/* 轮播图相关 */
+
+swiper {
+  height: 450rpx;
+  width: 100%;
+}
+
+.swiper-image {
+  height: 100%;
+  width: 100%;
+}
+
+.slide-image {
+  height: 100%;
+  width: 100%;
+}
+
+/* 简介相关 */
+
+.description_content {
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-top: 10px;
+  font-size: 13px;
+  color: #888;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  /* 通过以上四行实现收缩功能 */
+}
+
+.description.title {
+  margin: 10rpx 5%;
+  font-size: 13px;
+  color: #777;
+  border-bottom: 2rpx solid #eee;
+}
+
+.block {
+  border-bottom: 2rpx solid rgb(212, 211, 211);
+  padding-bottom: 20rpx;
+}
+
+.ellipsis {
+  -webkit-line-clamp: 2; /*最多显示3行*/
+  opacity: 0.75; /* 透明度75%*//* align-items: center; */
+}
+
+/* .description_title{
+  margin-left: 6%;
+} */
+
+.img-ellipsis {
+  width: 40rpx;
+  height: 25rpx;
+  margin-right: 6%;
+  margin-top: 10rpx;
+  float: right;
+}
+
+.clear {
+  clear: both;
+}
+
+/* 标题相关 */
+
+.block.title .name {
+  text-align: center;
+  font-weight: bold;
+  margin: 20rpx 0 10rpx 0;
+}
+
+.weui-media-box__label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* height: 50rpx; */
+}
+
+.weui-media-box__label view {
+  vertical-align: center;
+  display: inline-block;
+  align-items: center;
+  font-size: 20rpx;
+  margin: 2rpx 0 5rpx 0;
+}
+
+.labels {
+  font-size: 20rpx;
+  color: #888;
+}
+
+.weui-media-box__label .sight_price {
+  color: #99e2ff;
+  border: 2rpx solid #99e2ff;
+  padding: 0 5rpx;
+  border-radius: 5rpx;
+  margin: 0 10rpx;
+}
+
+.weui-media-box__label .sight_label {
+  /* color: #999999;
+  background: #F9F9F9;
+  border: 2rpx solid #F9F9F9;
+  padding: 0;
+  border-radius: 5rpx; */
+  color: #98e789;
+  border: 2rpx solid #98e789;
+  padding: 0 5rpx;
+  margin: 0 10rpx;
+  border-radius: 5rpx;
+}
+
+.weui-media-box__label .sight_score {
+  color: whitesmoke;
+  width: 50rpx;
+  text-align: center;
+  padding: 0;
+  /* margin: 0 10rpx; */
+  border-radius: 0 5rpx 5rpx 0;
+  font-weight: bold;
+}
+
+.weui-media-box__label .score_title {
+  border-radius: 5rpx 0 0 5rpx;
+  padding: 0 10rpx;
+}
+
+.weui-media-box__label .score_title_red {
+  color: #ff6060;
+  border: 2rpx solid #ff6060;
+  /* font-weight: bold; */
+}
+
+.weui-media-box__label .score_title_yellow {
+  color: #ffc800;
+  border: 2rpx solid #ffc800;
+  /* font-weight: bold; */
+}
+
+.weui-media-box__label .score_title_green {
+  color: #00c06a;
+  border: 2rpx solid #00c06a;
+  /* font-weight: bold; */
+}
+
+.weui-media-box__label .sight_score_red {
+  border: 2rpx solid #ff6060;
+  background-color: #ff6060;
+}
+
+.weui-media-box__label .sight_score_yellow {
+  border: 2rpx solid #ffc800;
+  background-color: #ffc800;
+}
+
+.weui-media-box__label .sight_score_green {
+  border: 2rpx solid #00c06a;
+  background-color: #00c06a;
+}
+
+/* address */
+
+.address_title, .more_title {
+  margin: 10rpx 5%;
+  font-size: 13px;
+  color: #777;
+  border-bottom: 2rpx solid #eee;
+}
+
+.address_content, .more_content {
+  margin: 10rpx 5% 0;
+  font-size: 13px;
+  color: #888;
+}
+
+/* 添加出游图标 */
+
+.add_tour {
+  position: fixed;
+  bottom: 30rpx;
+  right: 5%;
+}
+
+.add_tour_img {
+  width: 100rpx;
+  height: 100rpx;
+}
+
+/* 通用 */
+
+.clear {
+  clear: both;
+}
+
+.left {
+  float: left;
+}
+
+.right {
+  float: right;
+}
