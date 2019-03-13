@@ -151,5 +151,15 @@ Page({
     this.setData({
       select_text: e.detail.value
     });
+  },
+  switchSlider: function (e) {
+    this.setData({
+      current: e.target.dataset.index
+    })
+  },
+  changeSlider: function (e) {
+    this.setData({
+      current: e.detail.current
+    })
   }
 })

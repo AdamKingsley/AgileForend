@@ -10,19 +10,6 @@ page {
   background: white;
 }
 
-.searchbar-result {
-  margin-top: 0;
-  font-size: 14px;
-}
-
-.searchbar-result:before {
-  display: none;
-}
-
-.weui-cell {
-  padding: 12px 15px 12px 35px;
-}
-
 /* .filter-view {
   text-align: center;
   background: #efeff4;
@@ -41,7 +28,7 @@ page {
 
 .index-bottom {
   position: absolute;
-  margin-top: 110rpx;
+  margin-top: 1rpx;
   z-index: 10;
   width: 100%;
 }

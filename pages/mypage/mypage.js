@@ -48,9 +48,9 @@ Page({
       url: '../mypage/mypage'
     })
   },
-  bindHistoryTour: () => {
+  bindMyNotice: () => {
     wx.navigateTo({
-      url: '../historytour/historytour'
+      url: '../mynotice/mynotice'
     })
   },
   bindMyComment() {

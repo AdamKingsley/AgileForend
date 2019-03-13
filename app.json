@@ -16,7 +16,8 @@
     "pages/tour/tour",
     "pages/tour_detail/tour_detail",
     "pages/create_tour/create_tour",
-    "pages/myclub/myclub"
+    "pages/myclub/myclub",
+    "pages/mynotice/mynotice"
   ],
   "window": {
     "backgroundTextStyle": "light",

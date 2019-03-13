@@ -34,18 +34,18 @@
     </view>
     <view class="my-item flex-wrp">
       <view class="myitem-icon flex-item" >
-        <image src="../../images/historytour2.png"></image>
-      </view>
-      <view class="myitem-name flex-item" bindtap='bindHistoryTour'>
-        <text>历史出游</text>
-      </view>
-    </view>
-    <view class="my-item flex-wrp">
-      <view class="myitem-icon flex-item" >
         <image src="../../images/comment3.png"></image>
       </view>
       <view class="myitem-name flex-item" bindtap='bindMyComment'>
         <text>我的评价</text>
+      </view>
+    </view>
+    <view class="my-item flex-wrp">
+      <view class="myitem-icon flex-item" >
+        <image src="../../images/ring.png"></image>
+      </view>
+      <view class="myitem-name flex-item" bindtap='bindMyNotice'>
+        <text>我的通知</text>
       </view>
     </view>
   </view>

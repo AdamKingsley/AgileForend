@@ -1,49 +1,38 @@
 /**index.wxss**/
-
-/* .container {
-  padding: 0;
-  font-size: 14rpx;
-  background: #f0f4f3;
-  color: #000;
-} */
-
 page {
   background: white;
 }
 
-.searchbar-result {
-  margin-top: 0;
-  font-size: 14px;
-}
+/*顶部导航栏*/
 
-.searchbar-result:before {
-  display: none;
-}
-
-.weui-cell {
-  padding: 12px 15px 12px 35px;
-}
-
-
-/* .filter-view {
-  text-align: center;
-  background: #efeff4;
-  border-bottom: 1rpx solid #d7d6dc;
-} */
-
-.index-top {
+.top-nav {
+  width: 750rpx;
   position: fixed;
   top: 0;
-  width: 750rpx;
-  /* height:175rpx; */
-  z-index: 100;
+  z-index: 1;
 }
+
+.top-nav-bar {
+  display: flex;
+  justify-content: space-around;
+  font-size: 13px;
+  padding: 10px 0;
+  background-color: #fff;
+  border-top: 1px solid #e5e5e5;
+}
+
+.top-nav-bar .active {
+  /*border-bottom: 2px solid #09bb07;*/
+  border-bottom: 2px solid #b6aaec;
+}
+
+
 
 /* 距离上面搜索框和筛选框的距离 */
 
 .index-bottom {
   position: absolute;
-  margin-top: 110rpx;
+  margin-top: 100rpx;
   z-index: 10;
   width: 100%;
 }
