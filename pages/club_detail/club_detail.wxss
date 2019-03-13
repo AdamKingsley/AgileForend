@@ -148,3 +148,8 @@ page {
   padding: 0 5rpx;
   border-radius: 5rpx;
 }
+
+.confirmBtn{
+  margin-top: 1.5%;
+  margin-bottom: 1.5%
+}

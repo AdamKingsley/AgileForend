@@ -19,7 +19,12 @@
   <text>团长：追梦赤子</text>    
 </view>
 <view class="confirmBtn">
-    <button type="primary" bindtap="confirm">
-      立即报名
-    </button>
-  </view>
+  <button type="primary" bindtap="confirm">
+    立即报名
+  </button>
+</view>
+<view class="confirmBtn">
+  <button type="primary" bindtap="confirm">
+    邀请入团
+  </button>
+</view>
