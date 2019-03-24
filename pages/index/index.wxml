@@ -43,7 +43,61 @@
       </view>
     </navigator> -->
   </view>
-  <view class="filter-view">筛选部分组件:未实现</view>
+  <view class="filter-view">
+    <view id="swiper-tab">
+      <view class="swiper-tab">
+        <view class="swiper-tab-list {{currentTab==0 ? 'on' : ''}}" data-current="0" bindtap="tabNav">{{filterData.first}}
+          <i></i>
+        </view>
+        <view class="swiper-tab-list {{currentTab==1 ? 'on' : ''}}" data-current="1" bindtap="tabNav">{{filterData.second}}
+          <i></i>
+        </view>
+        <view class="swiper-tab-list {{currentTab==2 ? 'on' : ''}}" data-current="2" bindtap="tabNav">{{filterData.thirds}}
+          <i></i>
+        </view>
+      </view>
+      <swiper current="{{currentTab}}" duration="1000" class="swiper-item" style='display:{{displays}}'>
+        <swiper-item class="filter_content">
+          <view class="shaixuan">
+            <!-- <span class="shuaixuantiaojian">面积</span> -->
+            <block wx:for="{{filterData.first_array}}" wx:key="key">
+              <view class="chose-txt" data-id="{{item.value}}" bindtap="selectScoreOrder" style="{{item.checked?' border:1rpx solid #e8580c; color: #e8580c':'border:1rpx solid gainsboro;color:gray'}}">
+                <text class="chose-p">{{item.name}}</text>
+              </view>
+            </block>
+          </view>
+        </swiper-item>
+        <swiper-item class="filter_content">
+          <view class="shaixuan">
+            <!-- <span class="shuaixuantiaojian">面积</span> -->
+            <block wx:for="{{filterData.second_array}}" wx:key="key">
+              <view class="chose-txt" data-id="{{item.value}}" bindtap="selectPriceOrder" style="{{item.checked?' border:1rpx solid #e8580c; color: #e8580c':'border:1rpx solid gainsboro;color:gray'}}">
+                <text class="chose-p">{{item.name}}</text>
+              </view>
+            </block>
+          </view>
+        </swiper-item>
+        <swiper-item class="filter_content">
+          <view class="shaixuan">
+            <block wx:for="{{filterData.third_array}}" wx:key="key">
+              <view class="zidingyi">
+                <span>{{item.name}}:</span>
+                <input bindinput="inputRange" class="front" type='text' data-index="{{item.type}}" data-type="min" value='{{item.min}}'></input>
+                <p>-</p>
+                <input bindinput="inputRange" class="back" type='text' data-index="{{item.type}}" data-type="max"  value="{{item.max}}"></input>
+                <!-- <button>设置</button> -->
+              </view>
+            </block>
+            <view class="qingkong">
+              <span class="tianjian" bindtap="FilterRangeClear">清除条件</span>
+              <p class="queren" bindtap="FilterConfirm">确认</p>
+            </view>
+          </view>
+        </swiper-item>
+      </swiper>
+    </view>
+    <!-- <view class="swiper-beijing" bindtap="hideNav" style='display:{{displays}}'></view> -->
+  </view>
 </view>
 
 <!-- 景点列表 -->
