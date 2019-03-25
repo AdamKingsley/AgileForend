@@ -13,106 +13,27 @@ Page({
       id: 1,
       pic: '../../images/sight_template.jpg',
       name: "总统府一日游",
-      description: "这里真好玩",
+      description: "去总统府一天的旅行",
       score: 4.7,
-      state: "未开始",
+      state: "已结束",
       nums: 5,
       limit: 100,
-      startTime: "2019-01-22:19:00",
-      endTime: "2019-01-22:22:00",
+      startTime: "2019-01-22:08:00",
+      endTime: "2019-01-22:17:00",
       joinOrNot: false,
       publicOrNot: true,
     }, {
       id: 2,
       pic: '../../images/sight_template.jpg',
-      name: "总统府一日游",
-      description: "这里真好玩",
-      score: 3.0,
+      name: "夫子庙两日游",
+      description: "探寻夫子庙的两天之旅",
       state: "未开始",
       nums: 5,
       limit: 100,
-      startTime: "2019-01-22:19:00",
-      endTime: "2019-01-22:22:00",
+      startTime: "2019-02-22:19:00",
+      endTime: "2019-02-23:22:00",
       joinOrNot: false,
       publicOrNot: true,
-    }, {
-      id: 3,
-      pic: '../../images/sight_template.jpg',
-      name: "总统府一日游",
-      description: "这里真好玩",
-      score: 5.0,
-      state: "进行中",
-      nums: 5,
-      limit: 100,
-      startTime: "2019-01-12:19:00",
-      endTime: "2019-01-22:22:00",
-      joinOrNot: false,
-      publicOrNot: true,
-    }, {
-      id: 4,
-      pic: '../../images/sight_template.jpg',
-      name: "总统府一日游",
-      description: "这里真好玩",
-      score: 4.7,
-      state: "进行中",
-      nums: 5,
-      limit: 100,
-      startTime: "2019-01-22:19:00",
-      endTime: "2019-01-22:22:00",
-      joinOrNot: false,
-      publicOrNot: true,
-    }, {
-      id: 5,
-      pic: '../../images/sight_template.jpg',
-      name: "总统府一日游",
-      description: "这里真好玩",
-      score: 4.7,
-      state: "进行中",
-      nums: 5,
-      limit: 100,
-      startTime: "2019-01-22:19:00",
-      endTime: "2019-01-22:22:00",
-      joinOrNot: false,
-      publicOrNot: true,
-    }, {
-      id: 6,
-      name: "雨花台",
-      pic: '../../images/sight_template.jpg',
-      name: "总统府一日游",
-      description: "这里真好玩",
-      score: 4.7,
-      state: "进行中",
-      nums: 5,
-      limit: 100,
-      startTime: "2019-01-22:19:00",
-      endTime: "2019-01-22:22:00",
-      joinOrNot: false,
-      publicOrNot: true,
-    }, {
-      id: 7,
-      pic: '../../images/sight_template.jpg',
-      name: "总统府一日游",
-      description: "这里真好玩",
-      score: 4.7,
-      state: "已结束",
-      nums: 5,
-      startTime: "2019-01-22:19:00",
-      endTime: "2019-01-22:22:00",
-      joinOrNot: false,
-      publicOrNot: true,
-    }, {
-      id: 8,
-      pic: '../../images/sight_template.jpg',
-      name: "总统府一日游",
-      description: "这里真好玩",
-      score: 4.7,
-      state: "已结束",
-      nums: 19,
-      startTime: "2019-01-22:19:00",
-      endTime: "2019-01-22:22:00",
-      joinOrNot: false,
-      clubId: 11000,
-      clubName: "社团A",
     }]
   },
   /**
@@ -126,6 +47,24 @@ Page({
       cityId: app.globalData.city ? app.globalData.city.id : this.data.cityId,
       province: app.globalData.province ? app.globalData.province.itemName : this.data.province,
       provinceId: app.globalData.province ? app.globalData.province.id : this.data.provinceId,
+    });
+  },
+  init_tours: function () {
+    let that = this;
+    //TODO 之后改为分页||暂时为了应付检查先不分页
+    util.getData('tour/all/' + this.data.cityId).then(res => {
+      if (res.data.code == 200) {
+        console.log(res);
+        this.setData({
+          tours: res.data.data
+        });
+      } else {
+        util.showToast("获取数据出错！", "fail", 200);
+      }
+      wx.hideNavigationBarLoading();
+    }).catch(e => {
+      util.showToast("获取数据出错！", "fail", 200);
+      wx.hideNavigationBarLoading();
     });
   },
   onShow: function (options) {

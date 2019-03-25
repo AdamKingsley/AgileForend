@@ -17,21 +17,21 @@
     <view class='block title'>
       <view>
         <view class='name'>
-          <text>{{sight.name}}</text>
+          <text>{{tour.name}}</text>
         </view>
       </view>
 
       <view class='labels'>
         <view class='weui-media-box__label'>
-          <view class="sight_price">{{sight.price?'门票'+sight.price+'￥':'无门票'}}</view>
-          <view wx:if="{{sight.labels.length==1 && sight.labels[0]==''}}"></view>
+          <view class="sight_price">{{tour.state}}</view>
+          <view wx:if="{{tour.labels.length==1 && sight.labels[0]==''}}"></view>
           <view wx:else>
-            <view wx:for='{{sight.labels}}' wx:for-item="label" wx:key="*this">
+            <view wx:for='{{tour.labels}}' wx:for-item="label" wx:key="*this">
               <view class='sight_label'>{{label}}</view>
             </view>
           </view>
           <view class='score_title score_title_{{score_color}}'>评分</view>
-          <view class="sight_score sight_score_{{score_color}}">{{sight.score}}</view>
+          <view class="sight_score sight_score_{{score_color}}">{{tour.score}}</view>
         </view>
       </view>
     </view>
@@ -43,7 +43,7 @@
         <image class='img-ellipsis' src="{{ellipsis?'../../images/ellipsis.png':'../../images/unellipsis.png'}}"></image>
       </view>
       <view class='discription content'>
-        <text class="description_content {{ellipsis?'ellipsis':'unellipsis'}}">{{sight.description}}</text>
+        <text class="description_content {{ellipsis?'ellipsis':'unellipsis'}}">{{tour.description}}</text>
       </view>
       <view class='ellipsis'>
       </view>

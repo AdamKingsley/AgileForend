@@ -17,9 +17,9 @@ Page({
     //在标题栏中显示加载
     wx.showNavigationBarLoading();
     console.log("options:", options);
-    let sightId = options.sightId;
+    let tourId = options.tourId;
     //获取详情
-    util.getData('sight/detail/' + sightId).then(res => {
+    util.getData('tour/detail/' + tourId).then(res => {
       console.log("详情信息：", res);
       if (res.data.code == 200) {
         //轮播图数据准备
@@ -69,11 +69,11 @@ Page({
     this.setData({
       score_color
     });
-  },
-  createTour: function () {
-    //跳转到创建出游页面
-    wx.navigateTo({
-      url: '../create_tour/create_tour'
-    });
   }
+  // createTour: function () {
+  //   //跳转到创建出游页面
+  //   wx.navigateTo({
+  //     url: '../create_tour/create_tour'
+  //   });
+  // }
 })
