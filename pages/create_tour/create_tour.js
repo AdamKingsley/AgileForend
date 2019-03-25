@@ -7,8 +7,9 @@ Page({
   //初始化数据
   init_data: function (tourInfo) {
     console.log(clubInfo);
-    let clubinfo = this.data.clubinfo;
-    clubinfo.ownerid = wx.getStorageSync('userid');
+    let tourInfo = this.data.tourInfo;
+    tourInfo.ownerId = wx.getStorageSync('userid');
+    tourInfo.sightId = wx.getStorageSync('sightId');
   },
 
 
@@ -17,8 +18,8 @@ Page({
    */
   onLoad: function (options) {
     let that = this;
-    if (app.globalData.clubinfo) {
-      that.init_data(app.globalData.clubinfo);
+    if (app.globalData.clubInfo) {
+      that.init_data(app.globalData.clubInfo);
     } else {
       // wx.getClubInfo({
       //   success: res => {
@@ -42,11 +43,11 @@ Page({
   //提交社团信息到后台，创建
   confirm: function (e) {
     console.log("点击确认按钮", e);
-    console.log(this.data.clubinfo);
+    console.log(this.data.tourInfo);
     let complete = true;
-    Object.keys(this.data.clubinfo).forEach(key => {
-      console.log(key, ":", this.data.clubinfo[key]);
-      if (!this.data.clubinfo[key]) {
+    Object.keys(this.data.tourInfo).forEach(key => {
+      console.log(key, ":", this.data.tourInfo[key]);
+      if (!this.data.tourInfo[key]) {
         complete = false
         return;
       }
@@ -56,7 +57,7 @@ Page({
       return;
     }
     //没有空的之后开始提交
-    util.postData('/club/create', this.data.clubinfo).then(res => {
+    util.postData('/tour/create', this.data.tourInfo).then(res => {
       console.log(res);
       if (res.data.code == 200) {
         // wx.setStorageSync('userid', res.data.data);
