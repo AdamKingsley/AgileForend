@@ -9,6 +9,7 @@ Page({
     provinceId: 2,
     city: '南京',
     cityId: 1,
+    current:0,
     tours: [{
       id: 1,
       pic: '../../images/sight_template.jpg',
