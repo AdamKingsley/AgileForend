@@ -9,51 +9,64 @@ Page({
     provinceId: '320000',
     city: '南京',
     cityId: '320100',
-    // tours:null
-    tours: [{
-      id: 1,
-      pic: '../../images/sight_template.jpg',
-      name: "总统府一日游",
-      description: "去总统府一天的旅行",
-      score: 4.7,
-      state: "已结束",
-      nums: 5,
-      limit: 100,
-      startTime: "2019-01-22:08:00",
-      endTime: "2019-01-22:17:00",
-      joinOrNot: false,
-      publicOrNot: true,
-    }, {
-      id: 2,
-      pic: '../../images/sight_template.jpg',
-      name: "夫子庙两日游",
-      description: "探寻夫子庙的两天之旅",
-      state: "未开始",
-      nums: 5,
-      limit: 100,
-      startTime: "2019-02-22:19:00",
-      endTime: "2019-02-23:22:00",
-      joinOrNot: false,
-      publicOrNot: true,
-    }]
+    userId:null,
+    tours:null
+    // tours: [{
+    //   id: 1,
+    //   pic: '../../images/sight_template.jpg',
+    //   name: "总统府一日游",
+    //   description: "去总统府一天的旅行",
+    //   score: 4.7,
+    //   state: "已结束",
+    //   nums: 5,
+    //   limit: 100,
+    //   startTime: "2019-01-22:08:00",
+    //   endTime: "2019-01-22:17:00",
+    //   joinOrNot: false,
+    //   publicOrNot: true,
+    // }, {
+    //   id: 2,
+    //   pic: '../../images/sight_template.jpg',
+    //   name: "夫子庙两日游",
+    //   description: "探寻夫子庙的两天之旅",
+    //   state: "未开始",
+    //   nums: 5,
+    //   limit: 100,
+    //   startTime: "2019-02-22:19:00",
+    //   endTime: "2019-02-23:22:00",
+    //   joinOrNot: false,
+    //   publicOrNot: true,
+    // }]
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     console.log('index onload');
-    console.log(app.globalData)
+    console.log(app.globalData);
+    this.init_data();
+    this.init_tours();
+    // this.onShow();
+  },
+  onShow: function (options) {
+    console.log('index onShow');
+    console.log(app.globalData);
+    // 默认筛选的下拉框是关闭的
+  },
+  init_data: function () {
     this.setData({
+      //默认的定位信息
       city: app.globalData.city ? app.globalData.city.itemName : this.data.city,
       cityId: app.globalData.city ? app.globalData.city.id : this.data.cityId,
       province: app.globalData.province ? app.globalData.province.itemName : this.data.province,
       provinceId: app.globalData.province ? app.globalData.province.id : this.data.provinceId,
+      userId: wx.getStorageSync('userid'),
     });
   },
   init_tours: function () {
     let that = this;
     //TODO 之后改为分页||暂时为了应付检查先不分页
-    util.getData('tour/all/' + this.data.cityId).then(res => {
+    util.getData('tour/all/' + this.data.cityId + '/' + this.data.userId).then(res => {
       if (res.data.code == 200) {
         console.log(res);
         this.setData({

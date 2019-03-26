@@ -58,6 +58,9 @@
 
 <view class="page__bd index-bottom">
   <view class="weui-panel weui-panel_access">
+   <block wx:if="{{!tours}}">
+    </block>
+    <block wx:elif="{{tours.length > 0}}">
     <view class="weui-panel__bd" wx:for='{{tours}}' wx:key="id">
       <navigator url="../tour_detail/tour_detail?tourId={{item.id}}&tourName={{item.name}}" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
         <view class="weui-media-box__hd weui-media-box__hd_in-appmsg sight_image">
@@ -91,5 +94,9 @@
         </view>
       </navigator>
     </view>
+    </block>
+    <block wx:else>
+      <view class="empty">暂无出游信息</view>
+    </block>
   </view>
 </view>

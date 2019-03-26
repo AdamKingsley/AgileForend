@@ -4,7 +4,7 @@ var data = {
   tourInfo: {
     sightId: '',
     name: '',
-    des: '',
+    description: '',
     limit: '',
     startTime: '',
     endTime: '',

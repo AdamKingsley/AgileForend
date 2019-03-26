@@ -18,8 +18,9 @@ Page({
     wx.showNavigationBarLoading();
     console.log("options:", options);
     let tourId = options.tourId;
+    let userId = wx.getStorageSync('userid');
     //获取详情
-    util.getData('tour/detail/' + tourId).then(res => {
+    util.getData('tour/detail/' + tourId + "/" + userId).then(res => {
       console.log("详情信息：", res);
       if (res.data.code == 200) {
         //轮播图数据准备

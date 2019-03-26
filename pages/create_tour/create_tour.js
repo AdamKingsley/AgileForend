@@ -14,7 +14,6 @@ Page({
       sightId:sightId,
       tourInfo:tourInfo
     });
-    // tourInfo.sightId = wx.getStorageSync('sightId');
   },
   /**
    * 生命周期函数--监听页面加载
@@ -71,7 +70,7 @@ Page({
   },
 
   bindDes: function (e) {
-    this.change_tour_data('des', e.detail.value);
+    this.change_tour_data('description', e.detail.value);
   },
 
   bindLimit: function (e) {

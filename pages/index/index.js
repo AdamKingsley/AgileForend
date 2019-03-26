@@ -4,10 +4,7 @@ var filter = require('./filter.js');
 var app = getApp();
 Page({
   data: {
-    inputShowed: false,
-    select_text: "",
-    province: '江苏省',
-    provinceId: '320000',
+    inputShowed: false, 
     city: '南京',
     cityId: '320100',
     sights: null,
