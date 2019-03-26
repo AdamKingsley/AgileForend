@@ -52,12 +52,12 @@ Page({
         return;
       }
     });
-    if (!complete) {
-      util.showToast("完善信息后提交！", "fail", 2000);
-      return;
-    }
+    // if (!complete) {
+    //   util.showToast("完善信息后提交！", "fail", 2000);
+    //   return;
+    // }
     //没有空的之后开始提交
-    util.postData('/tour/create', this.data.tourInfo).then(res => {
+    util.postData('tour/create', this.data.tourInfo).then(res => {
       console.log(res);
       if (res.data.code == 200) {
         // wx.setStorageSync('userid', res.data.data);
@@ -84,6 +84,18 @@ Page({
 
   bindLimit: function (e) {
     this.change_tour_data('limit', e.detail.value);
+  },
+  
+  bindStartTime: function (e) {
+    this.change_tour_data('startTime', e.detail.value);
+  },
+
+  bindEndTime: function(e) {
+    this.change_tour_data('endTime', e.detail.value)
+  },
+
+  bindClub: function(e) {
+    thhis.change_tour_data('clubId', e.detail.value)
   },
 
   //统一处理的改变社团信息的对应的数据

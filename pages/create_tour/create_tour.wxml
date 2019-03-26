@@ -33,7 +33,7 @@
         <view class="weui-label">开始时间</view>
       </view>
       <view class="weui-cell__bd">
-        <input placeholder-class='placeholder' class="weui-input" placeholder="请输入开始时间" bindinput='bindLimit' />
+        <input placeholder-class='placeholder' class="weui-input" placeholder="请输入开始时间" bindinput='bindStartTime' />
       </view>
     </view>
 
@@ -42,7 +42,7 @@
         <view class="weui-label">结束时间</view>
       </view>
       <view class="weui-cell__bd">
-        <input placeholder-class='placeholder' class="weui-input" placeholder="请输入结束时间" bindinput='bindLimit' />
+        <input placeholder-class='placeholder' class="weui-input" placeholder="请输入结束时间" bindinput='bindEndTime' />
       </view>
     </view>
 
@@ -51,7 +51,7 @@
         <view class="weui-label">所属社团</view>
       </view>
       <view class="weui-cell__bd">
-        <input placeholder-class='placeholder' class="weui-input" placeholder="请选择所属社团" bindinput='bindLimit' />
+        <input placeholder-class='placeholder' class="weui-input" placeholder="请选择所属社团" bindinput='bindClub' />
       </view>
     </view>
 
