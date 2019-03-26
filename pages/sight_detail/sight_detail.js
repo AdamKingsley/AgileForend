@@ -74,7 +74,7 @@ Page({
   createTour: function() {
     //跳转到创建出游页面
     wx.navigateTo({
-      url: '../create_tour/create_tour'
+      url: '../create_tour/create_tour?sightId='+this.data.sight.id
     });
   }
 })
