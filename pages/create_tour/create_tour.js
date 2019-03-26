@@ -95,8 +95,24 @@ Page({
   },
 
   bindClub: function(e) {
-    thhis.change_tour_data('clubId', e.detail.value)
+    this.change_tour_data('clubId', e.detail.value)
   },
+  bindStartChange: function (e) {
+    console.log(e.detail.value)
+    this.setData({
+      start: e.detail.value
+    })
+    this.change_tour_data("startTime", e.detail.value)
+  },
+  bindEndChange: function (e) {
+    console.log(e.detail.value)
+    this.setData({
+      end: e.detail.value
+    })
+    this.change_tour_data("endTime", e.detail.value)
+  },
+
+  
 
   //统一处理的改变社团信息的对应的数据
   change_tour_data: function (name, value) {
