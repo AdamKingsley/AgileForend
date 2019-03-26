@@ -5,32 +5,24 @@ var import_data = require("./data.js")
 Page({
   data: import_data.data,
   //初始化数据
-  init_data: function (tourinfo) {
-    console.log(tourinfo);
-    let tourInfo = this.data.tourinfo;
+  init_data: function (tourinfo,sightId) {
+    console.log(sightId);
+    let tourInfo = this.data.tourInfo;
     tourInfo.ownerId = wx.getStorageSync('userid');
-    tourInfo.sightId = wx.getStorageSync('sightId');
+    tourInfo.sightId = sightId;
+    this.setData({
+      sightId:sightId,
+      tourInfo:tourInfo
+    });
+    // tourInfo.sightId = wx.getStorageSync('sightId');
   },
-
-
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     let that = this;
-    if (app.globalData.tourInfo) {
-      that.init_data(app.globalData.tourInfo);
-    } else {
-      // wx.getTourInfo({
-      //   success: res => {
-      //     // console.log(res);
-      //     that.init_data(res.tourInfo);
-      //   },
-      //   fail: res => {
-      //     util.showToast("创建社团失败！", "fail", 2000);
-      //   }
-      // });
-    }
+    console.log(options.sightId);
+    that.init_data(app.globalData.tourInfo, options.sightId);
   },
 
   /**
