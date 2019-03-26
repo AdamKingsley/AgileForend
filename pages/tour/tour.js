@@ -1,14 +1,15 @@
 //index.js 主页
-var util = require('../../utils/util.js')
+var util = require('../../utils/util.js');
 var app = getApp()
 Page({
   data: {
     inputShowed: false,
     select_text: "",
     province: '江苏省',
-    provinceId: 2,
+    provinceId: '320000',
     city: '南京',
-    cityId: 1,
+    cityId: '320100',
+    // tours:null
     tours: [{
       id: 1,
       pic: '../../images/sight_template.jpg',

@@ -33,7 +33,7 @@
         <view class="weui-label">开始时间</view>
       </view>
       <view class="weui-cell__bd">
-        <input placeholder-class='placeholder' class="weui-input" placeholder="请输入开始人数" bindinput='bindLimit' />
+        <input placeholder-class='placeholder' class="weui-input" placeholder="请输入开始时间" bindinput='bindLimit' />
       </view>
     </view>
 

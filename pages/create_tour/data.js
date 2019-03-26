@@ -7,7 +7,7 @@ var data = {
     name: '',
     des: '',
     limit: '',
-    pics: '',
+    pics:'',
     ownerId: ''
   },
 }

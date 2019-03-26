@@ -63,10 +63,10 @@ Page({
                 //先获取userinf放到app的globaldata中
                 util.getData('user/' + data.userid).then(res => {
                   console.log(res);
-                  if(res.data.code=='200'){
+                  if (res.data.code == '200') {
                     app.globalData.userinfo = res.data.data;
-                  }else{
-                    util.showToast("获取用户信息失败！","fail",2000);
+                  } else {
+                    util.showToast("获取用户信息失败！", "fail", 2000);
                   }
                 }).catch(e => {
                   util.showToast("获取用户信息失败！", "fail", 2000);
@@ -99,10 +99,10 @@ Page({
       console.log("授权点击取消！")
     }
   },
-  onLoad: function(options) {
+  onLoad: function (options) {
     this.checkSession();
   },
-  onShow: function(options) {
+  onShow: function (options) {
     this.checkSession();
   },
 })

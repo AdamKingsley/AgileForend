@@ -5,9 +5,9 @@ var import_data = require("./data.js")
 Page({
   data: import_data.data,
   //初始化数据
-  init_data: function (tourInfo) {
-    console.log(clubInfo);
-    let tourInfo = this.data.tourInfo;
+  init_data: function (tourinfo) {
+    console.log(tourinfo);
+    let tourInfo = this.data.tourinfo;
     tourInfo.ownerId = wx.getStorageSync('userid');
     tourInfo.sightId = wx.getStorageSync('sightId');
   },
@@ -18,13 +18,13 @@ Page({
    */
   onLoad: function (options) {
     let that = this;
-    if (app.globalData.clubInfo) {
-      that.init_data(app.globalData.clubInfo);
+    if (app.globalData.tourInfo) {
+      that.init_data(app.globalData.tourInfo);
     } else {
-      // wx.getClubInfo({
+      // wx.getTourInfo({
       //   success: res => {
       //     // console.log(res);
-      //     that.init_data(res.clubInfo);
+      //     that.init_data(res.tourInfo);
       //   },
       //   fail: res => {
       //     util.showToast("创建社团失败！", "fail", 2000);
@@ -75,23 +75,23 @@ Page({
 
   //绑定社团名称
   bindName: function (e) {
-    this.change_club_data('name', e.detail.value);
+    this.change_tour_data('name', e.detail.value);
   },
 
   bindDes: function (e) {
-    this.change_club_data('des', e.detail.value);
+    this.change_tour_data('des', e.detail.value);
   },
 
   bindLimit: function (e) {
-    this.change_club_data('limit', e.detail.value);
+    this.change_tour_data('limit', e.detail.value);
   },
 
   //统一处理的改变社团信息的对应的数据
-  change_club_data: function (name, value) {
-    let clubinfo = this.data.clubinfo;
-    clubinfo[name] = value;
+  change_tour_data: function (name, value) {
+    let tourInfo = this.data.tourInfo;
+    tourInfo[name] = value;
     this.setData({
-      clubinfo
+      tourInfo
     });
   },
 
