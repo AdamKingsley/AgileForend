@@ -2,6 +2,7 @@ var util = require('../../utils/util.js')
 var app = getApp()
 Page({
   data: {
+    hiddenFlag: true,
     inputShowed: false,
     select_text: "",
     province: '江苏省',
@@ -67,5 +68,57 @@ Page({
     this.setData({
       select_text: e.detail.value
     });
-  }
+  },
+
+  invite: function (e) {
+    console.log("点击邀请按钮", e);
+    // console.log(this.data.clubinfo);
+    let complete = true;
+    // Object.keys(this.data.clubinfo).forEach(key => {
+    //   console.log(key, ":", this.data.clubinfo[key]);
+    //   if (!this.data.clubinfo[key]) {
+    //     complete = false
+    //     return;
+    //   }
+    // });
+    // if (!complete) {
+    //   util.showToast("完善信息后提交！", "fail", 2000);
+    //   return;
+    // }
+    // var 
+    this.setData({
+      hiddenFlag: false
+    })
+    // util.postData('/club/create', this.data.clubinfo).then(res => {
+    //   console.log(res);
+    //   if (res.data.code == 200) {
+    //     // wx.setStorageSync('userid', res.data.data);
+    //     util.showToast("保存信息成功！", "success", 2000);
+    //     // wx.switchTab({
+    //     //   url: '../index/index',
+    //     // });
+    //   } else {
+    //     util.showToast("初始化信息失败！", "fail", 2000);
+    //   }
+    // }).catch(e => {
+    //   util.showToast("请求失败，请重试！", "fail", 2000);
+    // });
+  },
+
+  confirm: function(e){
+      
+  },
+
+  //绑定社团名称
+  bindName: function (e) {
+    this.change_club_data('name', e.detail.value);
+  },
+
+  bindDes: function (e) {
+    this.change_club_data('des', e.detail.value);
+  },
+
+  bindLimit: function (e) {
+    this.change_club_data('limit', e.detail.value);
+  },
 })

@@ -19,12 +19,23 @@
   <text>团长：追梦赤子</text>    
 </view>
 <view class="confirmBtn">
-  <button type="primary" bindtap="confirm">
+  <button type="primary" bindtap="enterFor">
     立即报名
   </button>
 </view>
 <view class="confirmBtn">
-  <button type="primary" bindtap="confirm">
+  <button type="primary" bindtap="invite">
     邀请入团
+  </button>
+</view>
+<view class="weui-cell weui-cell_input" hidden='{{hiddenFlag}}'>
+  <view class="weui-cell__hd">
+    <view class="weui-label">用户id</view>
+  </view>
+  <view class="weui-cell__bd">
+    <input placeholder-class='placeholder' class="weui-input" placeholder="请输入用户id" bindinput='bindName' />
+  </view>
+  <button type="primary" bindtap="confirm">
+    确认
   </button>
 </view>
