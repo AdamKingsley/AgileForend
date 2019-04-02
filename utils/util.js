@@ -33,7 +33,7 @@ function postData(url, data) {
       method: "POST",
       data: data,
       header: {
-        //'Content-Type': 'application/json'
+        'Content-Type': 'application/json'
       },
       success: function(res) {
         resolve(res)

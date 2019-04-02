@@ -22,7 +22,10 @@ Page({
       // endTime: "2019-01-22:22:00",
       joinOrNot: false,
       publicOrNot: true,
-    }, ]
+    }, ],
+    invitedId: 0,
+    senderId: wx.getStorageSync("userid"),
+    clubId:0,
   },
   /**
    * 生命周期函数--监听页面加载
@@ -106,19 +109,43 @@ Page({
   },
 
   confirm: function(e){
-      
+    let that = this;
+    util.getData('/user/' + this.data.invitedId).then(response => {
+      console.log('response', response)
+      if (response.data.code == '200') {
+        this.setData({
+          clubId: this.data.clubs[0].id
+        })
+        // console.log(this.data.clubId);
+        util.postData('club/invite', this.data.invitedId, this.data.senderId, this.data.clubId).then(res => {
+          console.log(res);
+          if (res.data.code == 200) {
+            util.showToast("保存信息成功！", "success", 2000);
+          } else {
+            util.showToast("初始化信息失败！", "fail", 2000);
+          }
+        }).catch(e => {
+          util.showToast("请求失败，请重试！", "fail", 2000);
+        });
+      } else {
+        util.showToast("该用户不存在！", "fail", 2000);
+      }
+    }).catch(e => {
+      console.log(e);
+      util.showToast("网络请求失败！", "fail", 2000);
+    });
   },
 
-  //绑定社团名称
-  bindName: function (e) {
-    this.change_club_data('name', e.detail.value);
-  },
 
-  bindDes: function (e) {
-    this.change_club_data('des', e.detail.value);
-  },
 
-  bindLimit: function (e) {
-    this.change_club_data('limit', e.detail.value);
+  bindId: function(e){
+      this.setData({
+        invitedId:e.detail.value
+      })
+      // console.log(this.data.invitedId);
   },
 })
+function saveInvitation(e) {
+  
+  // util.postData('/club/invite', this.data.invitedId,this.data.senderId,this.data.clubId)
+}

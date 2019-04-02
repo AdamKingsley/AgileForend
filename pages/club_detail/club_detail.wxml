@@ -33,7 +33,7 @@
     <view class="weui-label">用户id</view>
   </view>
   <view class="weui-cell__bd">
-    <input placeholder-class='placeholder' class="weui-input" placeholder="请输入用户id" bindinput='bindName' />
+    <input placeholder-class='placeholder' class="weui-input" placeholder="请输入用户id" bindinput='bindId' />
   </view>
   <button type="primary" bindtap="confirm">
     确认
