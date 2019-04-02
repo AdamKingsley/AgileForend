@@ -28,6 +28,9 @@ Page({
           title: res.data.data.name
         });
         let pics = res.data.data.pics;
+        for(var i in pics){
+          pics[i] = util.getUrlPrefix() + pics[i];
+        }
         console.log(pics);
         let swiper_images = [];
         pics.forEach((item, index) => {

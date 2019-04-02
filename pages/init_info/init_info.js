@@ -72,10 +72,10 @@ Page({
           return;
         }
       });
-      if (!complete) {
-        util.showToast("完善信息后提交！", "fail", 2000);
-        return;
-      }
+      // if (!complete) {
+      //   util.showToast("完善信息后提交！", "fail", 2000);
+      //   return;
+      // }
       //没有空的之后开始提交
       util.postData('/user/create', this.data.userinfo).then(res => {
         console.log(res);

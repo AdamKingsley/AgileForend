@@ -246,10 +246,11 @@ Page({
     let filterData = this.data.filterData;
     let filterSearchData = this.data.filterSearchData;
     for (var i = 0; i < filterData.third_array.length; i++) {
-      if (filterData.third_array[i].type == dataset.type) {
-        filterData.third_array[i][dataset.index] = detail.value;
+      if (filterData.third_array[i].type == dataset.index) {
+        filterData.third_array[i][dataset.type] = detail.value;
       }
     }
+    console.log(filterData);
     this.setData({
       filterData: filterData,
     });
@@ -280,8 +281,17 @@ Page({
     util.getData(url).then(res => {
       if (res.data.code == 200) {
         console.log(res);
+        let sights = res.data.data;
+        //组装正确的图片地址
+        sights.forEach(item => {
+          if (item.pics) {
+            for (var i in item.pics) {
+              item.pics[i] = util.getUrlPrefix() + item.pics[i];
+            }
+          }
+        });
         this.setData({
-          sights: res.data.data
+          sights: sights
         });
       } else {
         util.showToast("获取数据出错！", "fail", 200);
