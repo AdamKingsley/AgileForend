@@ -112,19 +112,20 @@ Page({
 
   confirm: function(e){
     let that = this;
-    util.getData('/user/' + this.data.invitedId).then(response => {
+    util.getData('/user/' + this.data.invitation.invitedId).then(response => {
       console.log('response', response)
       if (response.data.code == '200') {
+        var insideClubId = 'invitation.clubId';
         this.setData({
-          clubId: this.data.clubs[0].id
+          [insideClubId]: this.data.clubs[0].id
         })
         console.log(this.data.invitation.clubId);
         util.postData('club/invite', this.data.invitation).then(res => {
           console.log(res);
           if (res.data.code == 200) {
-            util.showToast("保存信息成功！", "success", 2000);
+            util.showToast("发送邀请成功！", "success", 2000);
           } else {
-            util.showToast("初始化信息失败！", "fail", 2000);
+            util.showToast("发送邀请失败！", "fail", 2000);
           }
         }).catch(e => {
           util.showToast("请求失败，请重试！", "fail", 2000);
@@ -141,10 +142,11 @@ Page({
 
 
   bindId: function(e){
-      this.setData({
-        invitedId: e.detail.value
-      })
-      console.log(this.data.invitation.invitedId);
+    var insideInvitedId = 'invitation.invitedId';
+    this.setData({
+      [insideInvitedId]: e.detail.value
+    })
+    console.log(this.data.invitation.invitedId);
   },
 })
 function saveInvitation(e) {
