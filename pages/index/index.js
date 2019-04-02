@@ -7,6 +7,8 @@ Page({
     inputShowed: false, 
     city: '南京',
     cityId: '320100',
+    province:"江苏省",
+    provinceId:"320000",
     sights: null,
     filterData: {},
     currentTab: -1,
@@ -56,8 +58,17 @@ Page({
     util.getData('sight/all/' + this.data.cityId).then(res => {
       if (res.data.code == 200) {
         console.log(res);
+        let sights = res.data.data;
+        //组装正确的图片地址
+        sights.forEach(item=>{
+          if(item.pics){
+            for(var i in item.pics){
+              item.pics[i] = util.getUrlPrefix() + item.pics[i];
+            }
+          }
+        });
         this.setData({
-          sights: res.data.data
+          sights: sights
         });
       } else {
         util.showToast("获取数据出错！", "fail", 200);

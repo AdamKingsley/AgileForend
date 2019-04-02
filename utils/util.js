@@ -1,6 +1,10 @@
 var app = getApp()
 var version = app.globalData.version
 var url_prefix = "http://" + app.globalData[version + 'Ip'] + ":" + app.globalData[version + 'Port']
+
+function getUrlPrefix(){
+  return url_prefix+'/';
+}
 //get请求
 function getData(url) {
   console.log(url_prefix)
@@ -96,3 +100,4 @@ module.exports.postData = postData;
 module.exports.getOwnerId = getOwnerId;
 module.exports.showToast = showToast;
 module.exports.checkPhone = checkPhone;
+module.exports.getUrlPrefix=getUrlPrefix;
