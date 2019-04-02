@@ -118,8 +118,8 @@ Page({
         this.setData({
           clubId: this.data.clubs[0].id
         })
-        // console.log(this.data.clubId);
-        util.postData('club/invite', this.data.invitedId, this.data.senderId, this.data.clubId).then(res => {
+        console.log(this.data.invitation.clubId);
+        util.postData('club/invite', this.data.invitation).then(res => {
           console.log(res);
           if (res.data.code == 200) {
             util.showToast("保存信息成功！", "success", 2000);
@@ -142,9 +142,9 @@ Page({
 
   bindId: function(e){
       this.setData({
-        invitedId:e.detail.value
+        invitedId: e.detail.value
       })
-      // console.log(this.data.invitedId);
+      console.log(this.data.invitation.invitedId);
   },
 })
 function saveInvitation(e) {
