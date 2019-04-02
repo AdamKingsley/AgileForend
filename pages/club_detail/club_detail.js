@@ -23,9 +23,11 @@ Page({
       joinOrNot: false,
       publicOrNot: true,
     }, ],
-    invitedId: 0,
-    senderId: wx.getStorageSync("userid"),
-    clubId:0,
+    invitation:{
+      invitedId: 0,
+      senderId: wx.getStorageSync("userid"),
+      clubId:0,
+    },
   },
   /**
    * 生命周期函数--监听页面加载
