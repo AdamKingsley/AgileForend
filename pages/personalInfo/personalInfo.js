@@ -8,7 +8,7 @@ Page({
    */
   data: {
     userinfo: {
-      openid: '0',
+      openid: '01251242',
       sex: '1',
       nickname: '巫浩然',
       avatar: '',
@@ -65,8 +65,8 @@ Page({
         )
       } else if (res.data.code !== 201) {
         wx.showToast({
-          title: '修改失败，请稍后再试',
-          icon: 'fail',
+          title: '修改失败',
+          icon: '../../images/fail.png',
           duration: 2000
         })
       }

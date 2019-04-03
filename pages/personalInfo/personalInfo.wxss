@@ -5,7 +5,7 @@
 .top {
   width: 140rpx;
   height: 140rpx;
-  padding: 40rpx;
+  padding: 20rpx;
   margin: 25rpx auto 25rpx auto;
   align-items: center;
 }
@@ -23,7 +23,7 @@
 }
 
 .item {
-  height: 70rpx;
+  height: 50rpx;
   background-color: #fff;
   margin: 20rpx;
   display: flex;
@@ -73,7 +73,7 @@
   padding: 2% 0 2% 2%;
   background-color: white;
   width: 80%;
-  height: 350rpx;
+  height: 360rpx;
   border: 5rpx solid #fac3cc;
   border-radius: 10rpx;
 }

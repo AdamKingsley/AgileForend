@@ -7,6 +7,10 @@
   </view>
   <view class='personal'>
     <view class='item'>
+      <text class='left'>用户id：</text>
+      <text class='right'>{{userinfo.openid}}</text>
+    </view>
+    <view class='item'>
       <text class='left'>昵称：</text>
       <text class='right'>{{userinfo.nickname}}</text>
     </view>
