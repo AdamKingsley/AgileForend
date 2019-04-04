@@ -120,16 +120,24 @@ Page({
           [insideClubId]: this.data.clubs[0].id
         })
         console.log(this.data.invitation.clubId);
-        util.postData('club/invite', this.data.invitation).then(res => {
-          console.log(res);
-          if (res.data.code == 200) {
-            util.showToast("发送邀请成功！", "success", 2000);
-          } else {
-            util.showToast("发送邀请失败！", "fail", 2000);
+        util.getData('club/check/' + this.data.invitation.invitedId + '/' + this.data.invitation.clubId).then(checkInRes =>{
+          if(checkInRes.data.code == '200'){
+            util.postData('club/invite', this.data.invitation).then(res => {
+              console.log(res);
+              if (res.data.code == 200) {
+                util.showToast("发送邀请成功！", "success", 2000);
+              } else {
+                util.showToast("发送邀请失败！", "fail", 2000);
+              }
+            }).catch(e => {
+              util.showToast("请求失败，请重试！", "fail", 2000);
+            });
+          }else{
+            util.showToast("他已是社团成员！", "fail", 2000);
           }
-        }).catch(e => {
-          util.showToast("请求失败，请重试！", "fail", 2000);
-        });
+          }).catch(e => {
+            util.showToast("网络请求失败！", "fail", 2000);
+          });
       } else {
         util.showToast("该用户不存在！", "fail", 2000);
       }
