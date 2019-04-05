@@ -28,6 +28,10 @@ Page({
       senderId: wx.getStorageSync("userid"),
       clubId:0,
     },
+    joinClubForm:{
+      clubId:0,
+      userId:0,
+    },
   },
   /**
    * 生命周期函数--监听页面加载
@@ -108,6 +112,26 @@ Page({
     // }).catch(e => {
     //   util.showToast("请求失败，请重试！", "fail", 2000);
     // });
+  },
+
+  enterFor: function(e){
+    let that = this;
+    var joinClubFormClubId = 'joinClubForm.clubId';
+    var joinClubFormUserId = 'joinClubForm.userId';
+    that.setData({
+      [joinClubFormClubId] : this.data.clubs[0].id,
+      [joinClubFormUserId] : wx.getStorageSync("userid")
+    })
+    util.postData('club/join',this.data.joinClubForm).then(res =>{
+      console.log(res);
+      if (res.data.code == 200) {
+        util.showToast("加入社团成功！", "success", 2000);
+      } else {
+        util.showToast("加入社团失败！", "fail", 2000);
+      }
+    }).catch(e => {
+      util.showToast("请求失败，请重试！", "fail", 2000);
+    });
   },
 
   confirm: function(e){
