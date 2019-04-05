@@ -45,6 +45,7 @@ Page({
       province: app.globalData.province ? app.globalData.province.itemName : this.data.province,
       provinceId: app.globalData.province ? app.globalData.province.id : this.data.provinceId,
     });
+    this.getClubMemberNum(this.data.clubs[0].id, wx.getStorageSync("userid"));
   },
   onShow: function (options) {
     this.onLoad(options);
@@ -83,35 +84,9 @@ Page({
     console.log("点击邀请按钮", e);
     // console.log(this.data.clubinfo);
     let complete = true;
-    // Object.keys(this.data.clubinfo).forEach(key => {
-    //   console.log(key, ":", this.data.clubinfo[key]);
-    //   if (!this.data.clubinfo[key]) {
-    //     complete = false
-    //     return;
-    //   }
-    // });
-    // if (!complete) {
-    //   util.showToast("完善信息后提交！", "fail", 2000);
-    //   return;
-    // }
-    // var 
     this.setData({
       hiddenFlag: false
     })
-    // util.postData('/club/create', this.data.clubinfo).then(res => {
-    //   console.log(res);
-    //   if (res.data.code == 200) {
-    //     // wx.setStorageSync('userid', res.data.data);
-    //     util.showToast("保存信息成功！", "success", 2000);
-    //     // wx.switchTab({
-    //     //   url: '../index/index',
-    //     // });
-    //   } else {
-    //     util.showToast("初始化信息失败！", "fail", 2000);
-    //   }
-    // }).catch(e => {
-    //   util.showToast("请求失败，请重试！", "fail", 2000);
-    // });
   },
 
   enterFor: function(e){
@@ -126,11 +101,26 @@ Page({
       console.log(res);
       if (res.data.code == 200) {
         util.showToast("加入社团成功！", "success", 2000);
+        this.getClubMemberNum(this.data.clubs[0].id, wx.getStorageSync("userid"));
       } else {
         util.showToast("加入社团失败！", "fail", 2000);
       }
     }).catch(e => {
       util.showToast("请求失败，请重试！", "fail", 2000);
+    });
+  },
+
+  getClubMemberNum: function(clubId,userId){
+    var clubNums = 'clubs[0].nums';
+    util.getData('club/detail/' + clubId + '/' + userId).then(response => {
+      if (response.data.code == '200') {
+        this.setData({
+          [clubNums]: response.data.data.nums
+        })
+      }
+    }).catch(e => {
+      console.log(e);
+      util.showToast("网络请求失败！", "fail", 2000);
     });
   },
 

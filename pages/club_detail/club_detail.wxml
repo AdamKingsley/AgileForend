@@ -7,7 +7,7 @@
 </view>
 
 <view>
-  <text>已有5人报名 报名限制100人</text>    
+  <text>已有{{clubs[0].nums}}人报名 报名限制{{clubs[0].limit}}人</text>    
 </view>
 <view>
   <text>社团名称：南大社团</text>    
