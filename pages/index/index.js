@@ -4,11 +4,11 @@ var filter = require('./filter.js');
 var app = getApp();
 Page({
   data: {
-    inputShowed: false, 
+    inputShowed: false,
     city: '南京',
     cityId: '320100',
-    province:"江苏省",
-    provinceId:"320000",
+    province: "江苏省",
+    provinceId: "320000",
     sights: null,
     filterData: {},
     currentTab: -1,
@@ -60,9 +60,9 @@ Page({
         console.log(res);
         let sights = res.data.data;
         //组装正确的图片地址
-        sights.forEach(item=>{
-          if(item.pics){
-            for(var i in item.pics){
+        sights.forEach(item => {
+          if (item.pics) {
+            for (var i in item.pics) {
               item.pics[i] = util.getUrlPrefix() + item.pics[i];
             }
           }
@@ -257,7 +257,7 @@ Page({
   },
   filterSearch() {
     //范围数据检查，数据传送给对应的filterSearchData
-    // this.checkRangeData();
+    this.checkRangeData();
     //按照筛选条件进行选择 请求后端进行筛选和排序工作
     // scoreOrder: -1,
     // priceOrder: -1,
@@ -272,10 +272,10 @@ Page({
     let request_arr = []
     for (var key in searchData) {
       if (searchData[key]) {
-        request_arr.push('f_'+key + '=' + searchData[key])
+        request_arr.push('f_' + key + '=' + searchData[key])
       }
     }
-    url+=(request_arr.join('&'));
+    url += (request_arr.join('&'));
     //打印请求的url
     console.log(url);
     util.getData(url).then(res => {
@@ -306,7 +306,10 @@ Page({
     //checkData
     let rangeData = this.data.filterData.third_array;
     let filterSearchData = this.data.filterSearchData;
-    for (var item in rangeData) {
+    //console.log(rangeData);
+    for (var index in rangeData) {
+      let item = rangeData[index];
+      console.log(item)
       if (item.type == 'price') {
         filterSearchData.minPrice = item.min;
         filterSearchData.maxPrice = item.max;
@@ -315,18 +318,23 @@ Page({
         filterSearchData.maxScore = item.max;
       }
     }
+    console.log(filterSearchData);
     //设置数据
     this.setData({
       filterSearchData: filterSearchData,
     });
     //设置完数据，检查范围值
-    if (filterSearchData.minScore && filterSearchData.maxScore && filterSearchData.maxScore < filterSearchData.minScore) {
-      util.showToast("前值需小于后值", "fail", 200);
-      return false;
+    if (filterSearchData.maxPrice && filterSearchData.maxPrice != '') {
+      if (filterSearchData.minPrice && filterSearchData.minPrice && filterSearchData.maxPrice < filterSearchData.minPrice) {
+        util.showToast("前值需小于后值", "fail", 200);
+        return false;
+      }
     }
-    if (filterSearchData.minPrice && filterSearchData.minPrice && filterSearchData.maxPrice < filterSearchData.minPrice) {
-      util.showToast("前值需小于后值", "fail", 200);
-      return false;
+    if (filterSearchData.maxScore && filterSearchData.maxScore != '') {
+      if (filterSearchData.minScore && filterSearchData.maxScore && filterSearchData.maxScore < filterSearchData.minScore) {
+        util.showToast("前值需小于后值", "fail", 200);
+        return false;
+      }
     }
     return true;
   }
