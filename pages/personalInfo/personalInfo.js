@@ -7,27 +7,26 @@ Page({
    * 页面的初始数据
    */
   data: {
-    userinfo: {
-      openid: '01251242',
-      sex: '1',
-      nickname: '巫浩然',
+    userInfo: {
+      id: '0',
+      openid: '0',
+      sex: 'MALE',
+      nickname: '',
       avatar: '',
-      tel: '13888888888',
-      province: '江苏省',
-      city: '南京市',
-      area: '鼓楼区',
+      tel: '',
+      province: '',
+      city: '',
+      area: '',
       province_id: '',
       city_id: '',
       area_id: '',
       address: '', 
-      individual: '好嗨哦!',
-      school: '南京大学'
+      comment: '这个人很懒，什么都没有留下。',
+      school: ''
     },
     curWord: 0,
+    comment: '',
     maxWord: 50,
-    ownerId: 0,
-    individual: '',
-    openId: 0
   },
 
   /**
@@ -35,12 +34,12 @@ Page({
    */
   onLoad: function (options) {
     let that = this
-    var oid = wx.getStorageSync('ownerid')
-    var oid2 = wx.getStorageSync('openid')
+    console.log('index onload');
+    console.log(app.globalData);
 
     this.setData({
-      ownerId: oid,
-      openId: oid2
+      userId: wx.getStorageSync('userid'),
+      userInfo: app.globalData.user ? app.globalData.user.userInfo : this.data.userInfo,
     });
 
     this.getUser();
@@ -48,34 +47,26 @@ Page({
 
   modify: function (e) {
     let jsonData = {
-      'individual': this.data.individual
+      'comment': this.data.comment
     };
 
-    let url = 'user/individual/' + this.data.openId
+    let url = 'user/update' + this.data.userId
     util.postData(url, jsonData).then(function (res) {
       if (res.data.code === 200) {
-        wx.showToast({
-          title: '修改成功',
-          icon: 'success',
-          duration: 2000
-        })
+        util.showToast("修改成功！", "success", 2000);
         setTimeout(
           function () {
           }, 1200
         )
       } else if (res.data.code !== 201) {
-        wx.showToast({
-          title: '修改失败',
-          icon: '../../images/fail.png',
-          duration: 2000
-        })
+        util.showToast("修改失败!", "fail", 2000);
       }
     }).catch(function (e) { return Promise.reject(e); });
   },
 
   getUser: function () {
     let that = this
-    let url = "user/info/" + that.data.ownerId
+    let url = "user/" + this.data.userId
 
     var user = util.getData(url).then(function (res) {
       that.setData({
@@ -86,7 +77,7 @@ Page({
 
   bindTextAreaBlur: function (e) {
     this.setData({
-      individual: e.detail.value,
+      comment: e.detail.value
     })
   },
 
@@ -98,7 +89,7 @@ Page({
     }
     this.setData({
       curWord: length,
-      individual: e.detail.value
+      comment: e.detail.value
     });
   },
 

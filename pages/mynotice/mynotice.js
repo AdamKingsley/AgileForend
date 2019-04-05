@@ -1,66 +1,89 @@
 // pages/mynotice/mynotice.js
+var util = require('../../utils/util.js')
+var app = getApp()
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
+    page: 1,
+    pageSize: 1000,
+    loading: false,
+    userid: 0,
+    notification: [{
+      id: 0,
+      club: null,
+      senderid: 0,
+      userid: 0,
+      state: null,
+      time: null,
+      tourid: 0,
+      type: null,
+    }],
+    club:[{
+      id: 0,
+      name: '南园一舍',
+    }],
+    tour: [{
+      id: 0,
+      name: null,
+    }]
 
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad: function (options) {
-
+    this.loadMynotice()
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
+  onQuestionTap(e) {
+    let qid = e.currentTarget.dataset.qid;
+    wx.navigateTo({
+      url: '../question/question?id=' + qid
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
   onPullDownRefresh: function () {
-
+    if (!this.data.loading) {
+      this.setData({ page: 1 })
+      this.loadMyQuestions(null, wx.hideLoading)
+      wx.showLoading({
+        title: '正在刷新...',
+        mask: true,
+      })
+    }
   },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
   onReachBottom: function () {
-
+    if (!this.data.loading) {
+      this.setData({ page: this.data.page + 1 })
+      this.loadMyQuestions(this.data.page)
+    }
   },
+  loadMyQuestions: function (page) {
+    page = page || this.data.page
+    util.getOwnerId().then(ownerid => {
+      this.setData({ loading: true })
+      let url = `user/${ownerid}/${pageName}/${this.data.page}/${this.data.pageSize}`
+      util.getData(url).then(({ data }) => {
+        this.setData({ loading: false })
+        wx.stopPullDownRefresh()
 
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+        // 挂载数据
+        if (1 >= page) {
+          this.setData({ myQuestions: data.data.content })
+        } else {
+          if (!data.data.empty) {
+            let questions = this.data.myQuestions
+            data.data.content.map(question => {
+              questions.push(question)
+            })
+            this.setData({ myQuestions: questions })
+          } else {
+            this.setData({ page: this.data.page - 1 })
+          }
+        }
+      }).catch((err) => {
+        this.setData({ loading: false })
+        wx.stopPullDownRefresh()
+        if (unShowLoading) {
+          unShowLoading()
+        }
+      })
+    })
+      .catch(err => {
+      })
   }
 })

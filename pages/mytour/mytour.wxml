@@ -6,7 +6,7 @@
     <view class="{{current == 1 ? 'active' : ''}}" catchtap="switchSlider" data-index="1">未开始</view>
     <view class="{{current == 2 ? 'active' : ''}}" catchtap="switchSlider" data-index="2">进行中</view>
     <view class="{{current == 3 ? 'active' : ''}}" catchtap="switchSlider" data-index="3">已结束</view>
-    <view class="{{current == 4 ? 'active' : ''}}" catchtap="switchSlider" data-index="4">待评价</view>
+    <!-- <view class="{{current == 4 ? 'active' : ''}}" catchtap="switchSlider" data-index="4">待评价</view> -->
   </view>
 </view>
 
@@ -52,7 +52,7 @@
 
   <view style="display:{{current == 1 ? 'block' : 'none'}}">
     <view class="weui-panel weui-panel_access">
-      <view class="weui-panel__bd" wx:for='{{tours}}' wx:if="{{item.state=='未开始'}}" wx:key="id">
+      <view class="weui-panel__bd" wx:for='{{tours}}' wx:if="{{item.state=='未开始'&&item.joinOrNot==true}}" wx:key="id">
         <navigator url="../tour_detail/tour_detail?tourId={{item.id}}&tourName={{item.name}}" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
           <view class="weui-media-box__hd weui-media-box__hd_in-appmsg sight_image">
             <image class="weui-media-box__thumb" src="{{item.pic}}" />
@@ -92,7 +92,7 @@
 
   <view style="display:{{current == 2 ? 'block' : 'none'}}">
     <view class="weui-panel weui-panel_access">
-      <view class="weui-panel__bd" wx:for='{{tours}}' wx:if="{{item.state=='进行中'}}" wx:key="id">
+      <view class="weui-panel__bd" wx:for='{{tours}}' wx:if="{{item.state=='进行中'&&item.joinOrNot==true}}" wx:key="id">
         <navigator url="../tour_detail/tour_detail?tourId={{item.id}}&tourName={{item.name}}" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
           <view class="weui-media-box__hd weui-media-box__hd_in-appmsg sight_image">
             <image class="weui-media-box__thumb" src="{{item.pic}}" />
@@ -132,7 +132,7 @@
 
   <view style="display:{{current == 3 ? 'block' : 'none'}}">
     <view class="weui-panel weui-panel_access">
-      <view class="weui-panel__bd" wx:for='{{tours}}' wx:if="{{item.state=='已结束'}}" wx:key="id">
+      <view class="weui-panel__bd" wx:for='{{tours}}' wx:if="{{item.state=='已结束'&&item.joinOrNot==true}}" wx:key="id">
         <navigator url="../tour_detail/tour_detail?tourId={{item.id}}&tourName={{item.name}}" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
           <view class="weui-media-box__hd weui-media-box__hd_in-appmsg sight_image">
             <image class="weui-media-box__thumb" src="{{item.pic}}" />
@@ -170,43 +170,4 @@
     </view>
   </view>
 
-  <view style="display:{{current == 4 ? 'block' : 'none'}}">
-    <view class="weui-panel weui-panel_access">
-      <view class="weui-panel__bd" wx:for='{{tours}}' wx:if="{{item.state=='待评价'}}" wx:key="id">
-        <navigator url="../tour_detail/tour_detail?tourId={{item.id}}&tourName={{item.name}}" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
-          <view class="weui-media-box__hd weui-media-box__hd_in-appmsg sight_image">
-            <image class="weui-media-box__thumb" src="{{item.pic}}" />
-          </view>
-          <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
-            <view class="weui-media-box__title">
-              <text>{{item.name}}</text>
-              <view wx:if="{{item.state=='已结束'}}">
-                <view wx:if="{{item.score>=4.5}}">
-                  <view class="score_red">{{item.score}}</view>
-                </view>
-                <view wx:elif="{{item.score<=3.0}}">
-                  <view class="score_green">{{item.score}}</view>
-                </view>
-                <view wx:else>
-                  <view class="score_yellow">{{item.score}}</view>
-                </view>
-              </view>
-            </view>
-            <view class='weui-media-box__label'>
-              <view class="tour_state">{{item.state}}</view>
-              <!-- <view wx:for='{{item.labels}}' wx:for-item="label" wx:key="*this">
-                <view class='tour_label'>{{label}}</view>
-              </view> -->
-              <view class ='tour_label'>{{item.publicOrNot? '公开': item.clubName}}</view>
-              <view class='tour_label'>{{item.limit?'参与人数: '+item.nums+'/'+item.limit:'参与人数: '+item.nums}}</view>
-            </view>
-            <view class='weui-media-box__label'>
-              <view class="tour_label">{{'起止时间: '+item.startTime+'~'+item.endTime}}</view>
-            </view>
-            <!-- <view class="weui-media-box__desc">{{item.description}}</view> -->
-          </view>
-        </navigator>
-      </view>
-    </view>
-  </view>
 </view>

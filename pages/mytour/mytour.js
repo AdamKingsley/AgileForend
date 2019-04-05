@@ -123,10 +123,7 @@ Page({
     console.log('index onload');
     console.log(app.globalData)
     this.setData({
-      city: app.globalData.city ? app.globalData.city.itemName : this.data.city,
-      cityId: app.globalData.city ? app.globalData.city.id : this.data.cityId,
-      province: app.globalData.province ? app.globalData.province.itemName : this.data.province,
-      provinceId: app.globalData.province ? app.globalData.province.id : this.data.provinceId,
+      
     });
   },
   onShow: function (options) {
