@@ -1,32 +1,90 @@
 <!--pages/mynotice/mynotice.wxml-->
-<view class='container questionList'>
-  <block wx:for='{{myQuestions}}' wx:for-index="idx" wx:for-item="question" data-idx="{{idx}}">
-    <view class="feed-item" bindtap="onQuestionTap" data-qid="{{question.id}}">
-      <view class="feed-content">
-        <!--问题-->
-        <view class="question">
-          <a class="question-link">
-            <text>{{question.title}}</text>
-          </a>
+<view class="weui-panel weui-panel_access">
+  <view class="weui-panel__bd">
+      <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+        <view class="weui-media-box__title">
+          <text>你有一个社团通知</text>
         </view>
-        <!--问题内容-->
-        <view class='question-content'>
-          <a>
-            <text>{{question.content}}</text>
-          </a>
+        <view class='weui-media-box__label'>
+          <view class="tour_label">王栋 邀请你加入 南京大学社团</view>
         </view>
-        <!--回答-->
-        <view class="answer-body">
-          <view class="answer-actions">
-            <view class="comments dot">
-              <a>{{question.answerCount}} 回答 </a>
-            </view>
-            <view class="follow-it">
-              <a>{{question.createdDate}}</a>
-            </view>
-          </view>
+        <view class='weui-media-box__label'>
+          <view class="tour_state">通知时间：2019-04-02 20:58:13</view>
+          <view class='blank'></view>
+          <view class="button_view">
+           <button class='button_type'>同意</button>
+           </view>
+          <view class="button_view">
+           <button class='button_type'>拒绝</button>
+      </view>
         </view>
       </view>
     </view>
-  </block>
+    <view class="blank1"></view>
+
+    <view class="weui-panel__bd">
+      <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+        <view class="weui-media-box__title">
+          <text>你有一个社团通知</text>
+        </view>
+        <view class='weui-media-box__label'>
+          <view class="tour_label">巫浩然 邀请你加入 东南大学社团</view>
+        </view>
+        <view class='weui-media-box__label'>
+          <view class="tour_state">通知时间：2019-04-02 20:58:13</view>
+          <view class='blank'></view>
+          <view class="button_view">
+           <button class='button_type'>同意</button>
+           </view>
+          <view class="button_view">
+           <button class='button_type'>拒绝</button>
+      </view>
+        </view>
+      </view>
+    </view>
+     <view class="blank1"></view>
+
+    <view class="weui-panel__bd">
+      <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+        <view class="weui-media-box__title">
+          <text>你有一个出游通知</text>
+        </view>
+        <view class='weui-media-box__label'>
+          <view class="tour_label">巫浩然 邀请你加入 总统府一日游</view>
+        </view>
+        <view class='weui-media-box__label'>
+          <view class="tour_state">通知时间：2019-04-02 20:58:13</view>
+          <view class='blank'></view>
+          <view class="button_view">
+           <button class='button_type'>同意</button>
+           </view>
+          <view class="button_view">
+           <button class='button_type'>拒绝</button>
+      </view>
+        </view>
+      </view>
+    </view>
+     <view class="blank1"></view>
+
+    <view class="weui-panel__bd">
+      <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+        <view class="weui-media-box__title">
+          <text>你有一个出游通知</text>
+        </view>
+        <view class='weui-media-box__label'>
+          <view class="tour_label">张诗琪 邀请你加入 游玩夫子庙</view>
+        </view>
+        <view class='weui-media-box__label'>
+          <view class="tour_state">通知时间：2019-04-02 20:58:13</view>
+          <view class='blank'></view>
+          <view class="button_view">
+           <button class='button_type'>同意</button>
+           </view>
+          <view class="button_view">
+           <button class='button_type'>拒绝</button>
+      </view>
+        </view>
+      </view>
+    </view>
+     <view class="blank1"></view>
 </view>
