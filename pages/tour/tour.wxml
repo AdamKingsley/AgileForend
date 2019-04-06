@@ -80,7 +80,7 @@
             </view>
           </view>
           <view class='weui-media-box__label'>
-            <view class="tour_price">{{item.state}}</view>
+            <view class="tour_price">{{item.stage}}</view>
             <!-- <view wx:for='{{item.labels}}' wx:for-item="label" wx:key="*this">
               <view class='tour_label'>{{label}}</view>
             </view> -->

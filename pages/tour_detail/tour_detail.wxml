@@ -23,13 +23,13 @@
 
       <view class='labels'>
         <view class='weui-media-box__label'>
-          <view class="sight_price">{{tour.state}}</view>
-          <view wx:if="{{tour.labels.length==1 && sight.labels[0]==''}}"></view>
+          <view class="sight_price">{{tour.stage}}</view>
+          <!-- <view wx:if="{{tour.labels.length==1 && tour.labels[0]==''}}"></view>
           <view wx:else>
             <view wx:for='{{tour.labels}}' wx:for-item="label" wx:key="*this">
               <view class='sight_label'>{{label}}</view>
             </view>
-          </view>
+          </view> -->
           <view class='score_title score_title_{{score_color}}'>评分</view>
           <view class="sight_score sight_score_{{score_color}}">{{tour.score}}</view>
         </view>
@@ -52,8 +52,8 @@
 
     <!-- start address block -->
     <view class='block'>
-      <view class='address_title'>地址</view>
-      <view class='address_content'>{{sight.province+sight.city+sight.area+sight.address}}</view>
+      <view class='address_title'>评论</view>
+      <view class='address_content'>暂无评论</view>
     </view>
     <!-- end address block -->
 
@@ -69,7 +69,19 @@
 
 
   <!-- add icon -->
-  <view class='add_tour' bindtap='createTour'>
+  <view class='add_tour' bindtap='invite'>
     <image class='add_tour_img' src='../../images/add.png'></image>
+  </view>
+
+  <view class="weui-cell weui-cell_input" hidden='{{hiddenFlag}}'>
+    <view class="weui-cell__hd">
+      <view class="weui-label">用户id</view>
+    </view>
+    <view class="weui-cell__bd">
+      <input placeholder-class='placeholder' class="weui-input" placeholder="请输入用户id" bindinput='bindId' />
+    </view>
+    <button type="primary" bindtap="confirm">
+      确认
+    </button>
   </view>
 </view>
