@@ -25,6 +25,11 @@ Page({
     ellipsis: true,
     score_color: 'red',
     hiddenFlag: true,
+    invitation: {
+      invitedId: 0,
+      senderId: wx.getStorageSync("userid"),
+      tourId: 0,
+    },
   },
 
   onLoad: function (options) {
@@ -106,9 +111,9 @@ Page({
     util.getData('/user/' + this.data.invitation.invitedId).then(response => {
       console.log('response', response)
       if (response.data.code == '200') {
-        var insideClubId = 'invitation.tourId';
+        var insideTourId = 'invitation.tourId';
         this.setData({
-          [insideTourId]: this.data.tours[0].id
+          [insideTourId]: this.data.tour.id
         })
         console.log(this.data.invitation.tourId);
         util.postData('tour/invite', this.data.invitation).then(res => {
