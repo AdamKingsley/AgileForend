@@ -24,6 +24,10 @@ Page({
       comment: '这个人很懒，什么都没有留下。',
       school: ''
     },
+    userCommentForm: {
+      id: 0,
+      comment: null,
+    },
     curWord: 0,
     comment: '',
     maxWord: 50,
@@ -46,22 +50,23 @@ Page({
   },
 
   modify: function (e) {
-    let jsonData = {
-      'comment': this.data.comment
-    };
-
-    let url = 'user/update' + this.data.userId
-    util.postData(url, jsonData).then(function (res) {
-      if (res.data.code === 200) {
+    let that = this;
+    var userCommentFormUserId = 'userCommentForm.id';
+    var userCommentFormComment = 'userCommentForm.comment';
+    that.setData({
+      [userCommentFormComment]: this.data.comment,
+      [userCommentFormUserId]: wx.getStorageSync("userid")
+    })
+    util.postData('user/comment/update/', this.data.userCommentForm).then(res => {
+      console.log(res);
+      if (res.data.code == 200) {
         util.showToast("修改成功！", "success", 2000);
-        setTimeout(
-          function () {
-          }, 1200
-        )
-      } else if (res.data.code !== 201) {
-        util.showToast("修改失败!", "fail", 2000);
+      } else {
+        util.showToast("修改失败！", "fail", 2000);
       }
-    }).catch(function (e) { return Promise.reject(e); });
+    }).catch(e => {
+      util.showToast("请求失败，请重试！", "fail", 2000);
+    });
   },
 
   getUser: function () {

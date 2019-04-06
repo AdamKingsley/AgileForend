@@ -11,7 +11,7 @@
 <!-- 出游列表 -->
 <view class="page__bd index-bottom">
   <view class="weui-panel weui-panel_access" bindchange="changeSlider" style="display:{{current == 0 ? 'block' : 'none'}}">
-    <view class="weui-panel__bd" wx:for='{{tours}}' wx:if="{{item.joinOrNot==true}}" wx:key="id">
+    <view class="weui-panel__bd" wx:for='{{tours}}' wx:if="{{item.joinOrNot==true && item.state=='已结束'}}" wx:key="id">
       <navigator url="../tour_detail/tour_detail?tourId={{item.id}}&tourName={{item.name}}" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
         <view class="weui-media-box__hd weui-media-box__hd_in-appmsg sight_image">
           <image class="weui-media-box__thumb" src="{{item.pic}}" />
@@ -44,7 +44,7 @@
   </view>
 
   <view style="display:{{current == 1 ? 'block' : 'none'}}">
-    <view class="weui-panel__bd" wx:for='{{tours}}' wx:if="{{item.joinOrNot==true}}" wx:key="id">
+    <view class="weui-panel__bd" wx:for='{{tours}}' wx:if="{{item.joinOrNot==true && item.state=='已结束' && item.description == ''}}" wx:key="id">
       <navigator url="../tour_detail/tour_detail?tourId={{item.id}}&tourName={{item.name}}" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
         <view class="weui-media-box__hd weui-media-box__hd_in-appmsg sight_image">
           <image class="weui-media-box__thumb" src="{{item.pic}}" />
@@ -77,7 +77,7 @@
   </view>
 
   <view style="display:{{current == 2 ? 'block' : 'none'}}">
-    <view class="weui-panel__bd" wx:for='{{tours}}' wx:if="{{item.joinOrNot==true}}" wx:key="id">
+    <view class="weui-panel__bd" wx:for='{{tours}}' wx:if="{{item.joinOrNot==true && item.state=='已结束' && !item.description == ''}}" wx:key="id">
       <navigator url="../tour_detail/tour_detail?tourId={{item.id}}&tourName={{item.name}}" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
         <view class="weui-media-box__hd weui-media-box__hd_in-appmsg sight_image">
           <image class="weui-media-box__thumb" src="{{item.pic}}" />

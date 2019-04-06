@@ -48,7 +48,7 @@ Page({
       url: '../mypage/mypage'
     })
   },
-  bindMyNotice: () => {
+  bindMyNotice: function () {
     wx.navigateTo({
       url: '../mynotice/mynotice'
     })

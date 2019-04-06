@@ -1,8 +1,121 @@
 /* pages/mynotice/mynotice.wxss */
-.question-content {
-  margin-top: 8rpx;
+.weui-panel__bd {
+  border-bottom: 1rpx solid #d7d6dc;
+  margin-left: 10rpx;
+  display:flex;
+  margin-bottom: 10rpx;
 }
-.question-content text {
-  font-size: 24rpx;
-  color: #BDBDBD;
+
+.sight_image {
+  width: 200rpx;
+  height: 160rpx;
+}
+
+.weui-media-box__thumb {
+  border-radius: 10rpx;
+}
+
+.weui-media-box__title {
+  margin-left: 10rpx;
+  font-size: 27rpx;
+  font-weight: bold;
+}
+
+.weui-media-box__title view {
+  vertical-align: center;
+  margin-left: 10rpx;
+  display: inline-block;
+  font-size: 30rpx;
+  align-items: center;
+  line-height: 30rpx;
+  width: 50rpx;
+  /* height: 17px; */
+  text-align: center;
+  border-radius: 20rpx;
+  font-weight: bold;
+  color: white;
+}
+.weui-media-box__bd{
+  flex:5;
+  height: 150rpx
+}
+
+.weui-media-box__desc {
+  font-size: 25rpx;
+}
+
+.weui-media-box__label {
+  vertical-align: center;
+  display: flex;
+  /* height: 50rpx; */
+  flex:1;
+
+}
+.weui-media-box__label .tour_state{
+  color: #99e2ff;
+  border: 2rpx solid #99e2ff;
+  padding: 0 5rpx;
+  border-radius: 5rpx;
+  flex: 4;
+}
+
+.blank{
+  flex: 2
+}
+
+.weui-media-box__label view {
+  vertical-align: center;
+  /* display: inline-block; */
+  font-size: 20rpx;
+  margin: 2rpx 10rpx 5rpx 0;
+}
+
+.weui-media-box__label .tour_price{
+  color: #99e2ff;
+  border: 2rpx solid #99e2ff;
+  padding: 0 5rpx;
+  border-radius: 5rpx;
+}
+.weui-media-box__label .tour_label{
+  font-size: 30rpx;
+  color: #999999;
+  background: #F9F9F9;
+  border: 2rpx solid #F9F9F9;
+  padding: 0 5rpx;
+  border-radius: 5rpx;
+}
+.notice-content.agree{
+    flex: 2;
+    padding: 15rpx 0;
+    font-size: 22rpx;
+}
+.notice-content.agree text{
+    display: inline-block;
+    padding: 15rpx 20rpx;
+    color: #40bcd0;
+    border: solid 2px #40bcd0;
+    border-radius: 6rpx;
+}
+.button_view{
+  /* justify-content: center;  */
+  display: flex;
+  flex: 1.5; 
+  /* height:150rpx; */
+}
+.button_type{
+  /* width: 100%; */
+  /* flex: 1; */
+  height: 40rpx;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  font-size: 22rpx;
+  vertical-align: center;
+  float: right;
+  /* padding-top:80rpx; */
+}
+
+.blank1{
+  height:1rpx;
 }

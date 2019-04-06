@@ -7,10 +7,10 @@ Page({
     tours: [{
       id: 1,
       pic: '../../images/sight_template.jpg',
-      name: "总统府一日游",
-      description: "这里真好玩",
-      score: 5.0,
-      state: "未开始",
+      name: "雨花台一日游",
+      description: "",
+      score: 4.6,
+      state: "已结束",
       nums: 5,
       limit: 100,
       startTime: "2019-01-22:19:00",
@@ -20,7 +20,7 @@ Page({
     }, {
       id: 2,
       pic: '../../images/sight_template.jpg',
-      name: "总统府一日游",
+      name: "玄武湖一日游",
       description: "这里一般般",
       score: 3.0,
       state: "已结束",
@@ -30,46 +30,85 @@ Page({
       endTime: "2019-01-22:22:00",
       joinOrNot: true,
       publicOrNot: true,
-    }],
-    tourcomments: [{
-      id: 1,
-      tourid: 0,
-      userid: 0,
-      comment: 'good',
-      score: 0
+    }, {
+      id: 3,
+      pic: '../../images/sight_template.jpg',
+      name: "中山陵一日游",
+      description: "这里一百分",
+      score: 5.0,
+      state: "已结束",
+      nums: 5,
+      limit: 100,
+      startTime: "2019-01-12:19:00",
+      endTime: "2019-01-22:22:00",
+      joinOrNot: true,
+      publicOrNot: true,
+    }, {
+      id: 4,
+      pic: '../../images/sight_template.jpg',
+      name: "明孝陵一日游",
+      description: "这里还可以",
+      score: 4.0,
+      state: "已结束",
+      nums: 5,
+      limit: 100,
+      startTime: "2019-01-22:19:00",
+      endTime: "2019-01-22:22:00",
+      joinOrNot: true,
+      publicOrNot: true,
+    }, {
+      id: 5,
+      pic: '../../images/sight_template.jpg',
+      name: "南大一日游",
+      description: "这里真好玩",
+      score: 4.7,
+      state: "进行中",
+      nums: 5,
+      limit: 100,
+      startTime: "2019-01-22:19:00",
+      endTime: "2019-01-22:22:00",
+      joinOrNot: true,
+      publicOrNot: true,
+    }, {
+      id: 6,
+      name: "雨花台",
+      pic: '../../images/sight_template.jpg',
+      name: "东南一日游",
+      description: "这里还不错",
+      score: 4.5,
+      state: "已结束",
+      nums: 5,
+      limit: 100,
+      startTime: "2019-01-22:19:00",
+      endTime: "2019-01-22:22:00",
+      joinOrNot: true,
+      publicOrNot: true,
+    }, {
+      id: 7,
+      pic: '../../images/sight_template.jpg',
+      name: "仙林一日游",
+      description: "",
+      score: 4.7,
+      state: "已结束",
+      nums: 5,
+      startTime: "2019-01-22:19:00",
+      endTime: "2019-01-22:22:00",
+      joinOrNot: false,
+      publicOrNot: true,
+    }, {
+      id: 8,
+      pic: '../../images/sight_template.jpg',
+      name: "火车站一日游",
+      description: "",
+      score: 4.7,
+      state: "已结束",
+      nums: 19,
+      startTime: "2019-01-22:19:00",
+      endTime: "2019-01-22:22:00",
+      joinOrNot: true,
+      clubId: 11000,
+      clubName: "社团A",
     }]
-  },
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-    console.log('index onload');
-    console.log(app.globalData);
-    this.setData({
-      userId: wx.getStorageSync('userid'),
-  
-    });  
-    init_tours();
-    init_tourcomment();
-  },
-  
-  init_tours: function() {
-    let that = this;
-    //TODO 之后改为分页||暂时为了应付检查先不分页
-    util.getData('tour/my/' + this.data.userId).then(res => {
-      if (res.data.code == 200) {
-        console.log(res);
-        this.setData({
-          tours: this.data.data
-        });
-      } else {
-        util.showToast("获取数据出错！", "fail", 200);
-      }
-      wx.hideNavigationBarLoading();
-    }).catch(e => {
-      util.showToast("获取数据出错！", "fail", 200);
-      wx.hideNavigationBarLoading();
-    });
   },
 
 
